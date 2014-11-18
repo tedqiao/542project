@@ -1,18 +1,23 @@
 package ui;
 import javax.swing.JPanel;
+
 import java.awt.GridBagLayout;
 import java.awt.Color;
+
 import javax.swing.border.LineBorder;
 import javax.swing.border.TitledBorder;
 import javax.swing.JLabel;
+
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
+
 import com.jgoodies.forms.layout.FormLayout;
 import com.jgoodies.forms.layout.ColumnSpec;
 import com.jgoodies.forms.factories.FormFactory;
 import com.jgoodies.forms.layout.RowSpec;
+
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
@@ -23,7 +28,7 @@ public class stockInfo extends JPanel {
 	 * Create the panel.
 	 */
 	String stockID;
-	public stockInfo(String stockID,String StockName,int vulue,double d) {
+	public stockInfo(String stockID,String StockName,Double double1,double d) {
 		this.stockID=stockID;
 		addMouseListener(new MouseAdapter() {
 			@Override
@@ -53,7 +58,7 @@ public class stockInfo extends JPanel {
 		lblNewLabel.setForeground(Color.YELLOW);
 		add(lblNewLabel, "3, 2, center, center");
 		
-		JLabel lblNewLabel_1 = new JLabel(""+vulue);
+		JLabel lblNewLabel_1 = new JLabel(""+double1);
 		lblNewLabel_1.setForeground(Color.GREEN);
 		add(lblNewLabel_1, "4, 2, center, fill");
 		
