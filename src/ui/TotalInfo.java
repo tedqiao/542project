@@ -8,12 +8,12 @@ import java.awt.Font;
 import java.awt.Color;
 import javax.swing.SwingConstants;
 
-public class total extends JPanel {
+public class TotalInfo extends JPanel {
 
 	/**
 	 * Create the panel.
 	 */
-	public total() {
+	public TotalInfo() {
 		setBackground(Color.BLACK);
 		setLayout(new BorderLayout(0, 0));
 		

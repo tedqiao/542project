@@ -32,7 +32,7 @@ public class User_Frame extends JFrame {
 		JScrollPane scroll = new JScrollPane(st);
 		scroll.setBounds(192, 105, 400, 173);
 		getContentPane().add(scroll);
-		total t = new total();
+		TotalInfo t = new TotalInfo();
 		t.setSize(400, 105);
 		t.setLocation(192, 0);
 		getContentPane().add(t);
