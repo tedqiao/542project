@@ -3,14 +3,14 @@ package ui;
 import javax.swing.JFrame;
 public class view extends JFrame {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
     	 view v = new view();
     }
-    public view() {
+    public view() throws Exception {
         init();
     }
 
-    private void init() {
+    private void init() throws Exception {
      
     	User_Frame my=new User_Frame();
 
