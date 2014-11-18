@@ -11,37 +11,29 @@ import javax.swing.border.LineBorder;
 
 import factory.DAOFactory;
 import vo.Hold;
-import vo.HoldCompany;
 import vo.Investors;
 
 import java.awt.Color;
 import java.util.List;
 
 
-public class User_Frame extends JFrame {
+public class user_frame1 extends JFrame {
 
 	private JPanel contentPane;
 	private String[] a;
 	
-	public User_Frame() throws Exception {
+	public user_frame1() throws Exception {
 		Investors invest = new Investors();
 		invest.setuserID("1");
 		invest = DAOFactory.getIInvestorDAOInstance().getInvestorById(invest);
-		//Hold hold = new Hold();
-		//hold.setuserID(invest.getuserID());
-		//List<Hold> l = DAOFactory.getIHoldDAOInstance().getAllHoldById(hold);
-		//for(Hold hd:l){
-		//	System.out.println(hd.getSid());
-		//	System.out.println(hd.getshares());
-		//}
-		HoldCompany hold = new HoldCompany();
+		Hold hold = new Hold();
 		hold.setuserID(invest.getuserID());
-		List<HoldCompany> l = DAOFactory.getIHoldDAOInstance().getAllHoldById(hold);
-		for(HoldCompany hd:l){
-				System.out.println(hd.getSid());
-				System.out.println(hd.getshares());
-			}
-		System.out.println("---------------------------------");
+		//List<Hold> l = DAOFactory.getIHoldDAOInstance().getAllHoldById(hold);
+		for(Hold hd:l){
+			System.out.println(hd.getSid());
+			System.out.println(hd.getshares());
+		}
+		//System.out.println(invest.getsex());
 		//System.out.println(invest.getAssets());
 		String sid[] = new String[l.size()];
 		for(int i=0;i<l.size();i++){
