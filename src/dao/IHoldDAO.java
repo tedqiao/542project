@@ -21,19 +21,20 @@ public class IHoldDAO {
 		this.conn = this.dbc.getConnection();
 	}
 	
-	public List<Hold> getAllHoldById(Hold hold) throws Exception {
-		List<Hold> list = new ArrayList<Hold>();
+	public List<HoldCompany> getAllHoldById(HoldCompany hold) throws Exception {
+		List<HoldCompany> list = new ArrayList<HoldCompany>();
 		try {
-			String sql = "select sid, shares from hold where userid = ?";
+			String sql = "select c.name, a.shares, b.sid from (select sid, shares from hold where userid = ?) a, stock b, company c where b.cid = c.cid and a.sid = b.sid";
 			this.pstmt = this.conn.prepareStatement(sql);
 			this.pstmt.setString(1, hold.getuserID());
 			ResultSet rs = this.pstmt.executeQuery();// get the result set
 			while (rs.next()) {
-				Hold hd = new Hold();
-				hd.setuserID(hold.getSid());
-				hd.setSid(rs.getString("sid"));
-				hd.setshares(rs.getInt("shares"));
-				list.add(hd);
+				HoldCompany hc = new HoldCompany();
+				hc.setuserID(hold.getSid());
+				hc.setSid(rs.getString("sid"));
+				hc.setshares(rs.getInt("shares"));
+				hc.setName(rs.getString("name"));
+				list.add(hc);
 			}
 		} catch (Exception e) {
 			throw e;
