@@ -27,12 +27,12 @@ import javax.swing.JTable;
 import java.awt.GridLayout;
 
 
-public class stockInfo2 extends JPanel {
+public class stockPanel extends JPanel {
 
 	/**
 	 * Create the panel.
 	 */
-	public stockInfo2() {
+	public stockPanel() {
 		setForeground(Color.YELLOW); 
 		setBackground(Color.BLACK);
 		setSize(700, 700);
@@ -44,7 +44,16 @@ public class stockInfo2 extends JPanel {
 	        stockInfo s4 = new stockInfo("3123123","shenzhenkeji",1231,-10.0);
 		setLayout(new GridLayout(0, 1, 0, 0));
 		this.setBounds(500, 500, 500, 500);;
-		add(s1);
+		add(new stockInfo("3123123","shenzhenkeji",1231,-10.0));
+		add(new stockInfo("3123123","shenzhenkeji",1231,-10.0));
+		add(new stockInfo("3123123","shenzhenkeji",1231,-10.0));
+		add(new stockInfo("3123123","shenzhenkeji",1231,-10.0));
+		add(new stockInfo("3123123","shenzhenkeji",1231,-10.0));
+		add(new stockInfo("3123123","shenzhenkeji",1231,-10.0));
+		add(new stockInfo("3123123","shenzhenkeji",1231,-10.0));
+		add(new stockInfo("3123123","shenzhenkeji",1231,-10.0));
+		add(new stockInfo("3123123","shenzhenkeji",1231,-10.0));
+		add(new stockInfo("3123123","shenzhenkeji",1231,-10.0));
 		
 	
 	}
