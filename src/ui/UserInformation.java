@@ -58,9 +58,9 @@ public class UserInformation extends JPanel {
 		lblAssert.setForeground(Color.YELLOW);
 		add(lblAssert, "1, 7, center, default");
 		
-		String[] stocks={"asdfsadf","asdfsdaf","asdfsadfa","123123","12312321","12321321"};
+	    String[] stocks={"asdfsadf","asdfsdaf","asdfsadfa","123123","12312321","12321321"};
 		
-		JList list = new JList(stocks);
+		JList list = new JList(stockID);
 		
 		JScrollPane scroll = new JScrollPane(list);	
 		list.addMouseListener(new MouseAdapter() {

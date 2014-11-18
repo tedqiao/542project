@@ -45,7 +45,7 @@ public class User_Frame extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-		UserInformation user = new UserInformation(invest.getuserName(),invest.getsex(),"asdfasdf",invest.getAssets(),sid);
+		UserInformation user = new UserInformation(invest.getuserName(),invest.getsex(),invest.getuserID(),invest.getAssets(),sid);
 		user.setBorder(new LineBorder(Color.YELLOW, 1, true));
 		user.setBounds(0, 0, 193, 278);
 		getContentPane().add(user);
