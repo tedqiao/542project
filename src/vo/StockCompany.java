@@ -1,12 +1,11 @@
 package vo;
 
-public class Stock {
+public class StockCompany {
 	private String Sid; //股票id
 	private Double Price_share; //股票单价
-	private int OverallShares;  //总股数
 	private Double Variation_Range; //浮动量
-	private String Cid; //公司代码
-
+	private String Name; //公司名称
+	
 	public String getSid() {
 		return Sid;
 	}
@@ -22,15 +21,7 @@ public class Stock {
 	public void setPrice_share(Double Price_share) {
 		this.Price_share = Price_share;
 	}
-
-	public int getOverallCapital() {
-		return OverallShares;
-	}
-
-	public void setOverallCapital(int OverallShares) {
-		this.OverallShares = OverallShares;
-	}
-
+	
 	public Double getVariation_Range() {
 		return Variation_Range;
 	}
@@ -39,11 +30,11 @@ public class Stock {
 		this.Variation_Range = Variation_Range;
 	}
 	
-	public String getCid() {
-		return Cid;
+	public String getName() {
+		return Name;
 	}
 
-	public void setCid(String Cid) {
-		this.Cid = Cid;
+	public void setName(String Name) {
+		this.Name = Name;
 	}
 }
