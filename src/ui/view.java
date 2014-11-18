@@ -1,11 +1,6 @@
 package ui;
 
 import javax.swing.JFrame;
-
-
-
-
-
 public class view extends JFrame {
 
     public static void main(String[] args) {

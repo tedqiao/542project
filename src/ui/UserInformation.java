@@ -25,7 +25,7 @@ public class UserInformation extends JPanel {
 	/**
 	 * Create the panel.
 	 */
-	public UserInformation(String name,String sex,String account,double money) {
+	public UserInformation(String name,String sex,String account,double money,String[] stockID) {
 		setBackground(Color.BLACK);
 		setLayout(new FormLayout(new ColumnSpec[] {
 				ColumnSpec.decode("188px:grow"),},

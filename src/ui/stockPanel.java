@@ -11,10 +11,13 @@ public class stockPanel extends JPanel {
 	/**
 	 * Create the panel.
 	 */
+	controller con= new controller();
 	public stockPanel() {
 		setForeground(Color.YELLOW); 
 		setBackground(Color.BLACK);
 		setSize(700, 700);
+		
+		
 		
 		stockInfo s1 = new stockInfo("3123123","shenzhenkeji",1231,-10.0);
 		 // stockInfo s1 = new stockInfo("3123123","shenzhenkeji",1231,-10.0); 

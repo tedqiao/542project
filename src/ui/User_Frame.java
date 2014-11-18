@@ -14,7 +14,7 @@ import java.awt.Color;
 public class User_Frame extends JFrame {
 
 	private JPanel contentPane;
-
+	private String[] a;
 	
 	public User_Frame() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -23,7 +23,7 @@ public class User_Frame extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-		UserInformation user = new UserInformation("zhang san","male","123123123",123213123.0);
+		UserInformation user = new UserInformation("zhang san","male","123123123",123213123.0,a);
 		user.setBorder(new LineBorder(Color.YELLOW, 1, true));
 		user.setBounds(0, 0, 193, 278);
 		getContentPane().add(user);
