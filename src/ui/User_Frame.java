@@ -45,22 +45,22 @@ public class User_Frame extends JFrame {
 		//System.out.println(invest.getAssets());
 		String sid[] = new String[l.size()];
 		for(int i=0;i<l.size();i++){
-			sid[i] = l.get(i).getSid();
+			sid[i] = l.get(i).getSid()+"   "+l.get(i).getName();
 		}
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 592, 300);
+		setBounds(100, 100, 592, 430);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		UserInformation user = new UserInformation(invest.getuserName(),invest.getsex(),invest.getuserID(),invest.getAssets(),sid);
 		user.setBorder(new LineBorder(Color.YELLOW, 1, true));
-		user.setBounds(0, 0, 193, 278);
+		user.setBounds(0, 0, 193, 402);
 		getContentPane().add(user);
 		stockPanel st = new stockPanel();
 		st.setBounds(192, 105, 400, 173);
 		JScrollPane scroll = new JScrollPane(st);
-		scroll.setBounds(192, 105, 400, 173);
+		scroll.setBounds(192, 105, 400, 297);
 		getContentPane().add(scroll);
 		TotalInfo t = new TotalInfo();
 		t.setSize(400, 105);
