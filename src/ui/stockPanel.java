@@ -2,28 +2,7 @@ package ui;
 import javax.swing.JPanel;
 
 import java.awt.Color;
-import java.awt.ScrollPane;
 
-import javax.swing.JInternalFrame;
-
-import com.jgoodies.forms.layout.FormLayout;
-import com.jgoodies.forms.layout.ColumnSpec;
-import com.jgoodies.forms.layout.RowSpec;
-
-import javax.swing.JList;
-
-import java.awt.FlowLayout;
-
-import javax.swing.JTextField;
-
-import com.jgoodies.forms.factories.FormFactory;
-
-import java.awt.BorderLayout;
-
-import javax.swing.JTextPane;
-import javax.swing.JScrollPane;
-import javax.swing.JButton;
-import javax.swing.JTable;
 import java.awt.GridLayout;
 
 
