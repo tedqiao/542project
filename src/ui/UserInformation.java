@@ -12,10 +12,12 @@ import com.jgoodies.forms.layout.ColumnSpec;
 import com.jgoodies.forms.layout.RowSpec;
 import com.jgoodies.forms.factories.FormFactory;
 
+import javax.swing.JFrame;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JList;
 import javax.swing.JButton;
+
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
@@ -43,23 +45,21 @@ public class UserInformation extends JPanel {
 				RowSpec.decode("default:grow"),}));
 		
 		JLabel lblUsername = new JLabel("username: "+name);
-		lblUsername.setForeground(Color.YELLOW);
-		add(lblUsername, "1, 1, center, top");
+		lblUsername.setForeground(Color.CYAN);
+		add(lblUsername, "1, 1,left, top");
 		
 		JLabel lblSex = new JLabel("sex: "+sex);
-		lblSex.setForeground(Color.YELLOW);
-		add(lblSex, "1, 3, center, default");
+		lblSex.setForeground(Color.CYAN);
+		add(lblSex, "1, 3, left, default");
 		
 		JLabel lblAccountnum = new JLabel("accountNum: "+account);
-		lblAccountnum.setForeground(Color.YELLOW);
-		add(lblAccountnum, "1, 5, center, default");
+		lblAccountnum.setForeground(Color.CYAN);
+		add(lblAccountnum, "1, 5, left, default");
 		
 		JLabel lblAssert = new JLabel("asset: "+money);
-		lblAssert.setForeground(Color.YELLOW);
-		add(lblAssert, "1, 7, center, default");
-		
-	    String[] stocks={"asdfsadf","asdfsdaf","asdfsadfa","123123","12312321","12321321"};
-		
+		lblAssert.setForeground(Color.CYAN);
+		add(lblAssert, "1, 7, left, default");
+		//list the Stocks the user hold
 		JList list = new JList(stockID);
 		
 		JScrollPane scroll = new JScrollPane(list);	
@@ -68,8 +68,14 @@ public class UserInformation extends JPanel {
 			public void mouseClicked(MouseEvent e) {
 				if(e.getClickCount()==2){
 					JList mylist=(JList)e.getSource();
-					//get stock infor 
-					System.out.println(mylist.getSelectedValue());
+					
+					String[] s = ((String) mylist.getSelectedValue()).split(" ");
+					Integer.parseInt(s[0]);
+					System.out.println("return ID"+s[0]);
+					UserStock us = new UserStock();
+					us.setVisible(true);
+					us.setResizable(false);
+					us.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 				}
 			}
 		});

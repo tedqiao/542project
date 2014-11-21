@@ -16,24 +16,29 @@ import vo.Investors;
 
 import java.awt.Color;
 import java.util.List;
+import java.awt.FlowLayout;
+
+import com.jgoodies.forms.layout.FormLayout;
+import com.jgoodies.forms.layout.ColumnSpec;
+import com.jgoodies.forms.layout.RowSpec;
+import com.jgoodies.forms.factories.FormFactory;
+
+import javax.swing.JLabel;
+
 
 
 public class User_Frame extends JFrame {
 
 	private JPanel contentPane;
 	private String[] a;
+	private TotalInfo t;
+	private stockPanel st;
 	
-	public User_Frame() throws Exception {
+	public User_Frame(String userID) throws Exception {
 		Investors invest = new Investors();
-		invest.setuserID("1");
+		invest.setuserID(userID);
 		invest = DAOFactory.getIInvestorDAOInstance().getInvestorById(invest);
-		//Hold hold = new Hold();
-		//hold.setuserID(invest.getuserID());
-		//List<Hold> l = DAOFactory.getIHoldDAOInstance().getAllHoldById(hold);
-		//for(Hold hd:l){
-		//	System.out.println(hd.getSid());
-		//	System.out.println(hd.getshares());
-		//}
+		
 		HoldCompany hold = new HoldCompany();
 		hold.setuserID(invest.getuserID());
 		List<HoldCompany> l = DAOFactory.getIHoldDAOInstance().getAllHoldById(hold);
@@ -57,15 +62,26 @@ public class User_Frame extends JFrame {
 		user.setBorder(new LineBorder(Color.YELLOW, 1, true));
 		user.setBounds(0, 0, 193, 402);
 		getContentPane().add(user);
-		stockPanel st = new stockPanel();
+		st = new stockPanel();
 		st.setBounds(192, 105, 400, 173);
 		JScrollPane scroll = new JScrollPane(st);
 		scroll.setBounds(192, 105, 400, 297);
 		getContentPane().add(scroll);
-		TotalInfo t = new TotalInfo();
-		t.setSize(400, 105);
+		t = new TotalInfo();
+		t.setSize(400, 90);
 		t.setLocation(192, 0);
 		getContentPane().add(t);
+	
 	}
+	
+	TotalInfo getTotals(){
+		return t;
+	}
+	
+	stockPanel getstockpanel(){
+		return st;
+	}
+	
+		
 
 }

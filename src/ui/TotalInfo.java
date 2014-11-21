@@ -7,9 +7,13 @@ import javax.swing.JLabel;
 import java.awt.Font;
 import java.awt.Color;
 import javax.swing.SwingConstants;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class TotalInfo extends JPanel {
-
+		private static int i=1;
+		JLabel pre;
+		//TotalInfo total;
 	/**
 	 * Create the panel.
 	 */
@@ -19,14 +23,43 @@ public class TotalInfo extends JPanel {
 		
 		JLabel lblTotal = new JLabel("total");
 		lblTotal.setVerticalAlignment(SwingConstants.BOTTOM);
-		lblTotal.setForeground(Color.YELLOW);
+		lblTotal.setForeground(Color.CYAN);
 		lblTotal.setFont(new Font("Lucida Grande", Font.PLAIN, 46));
 		add(lblTotal, BorderLayout.NORTH);
-		
-		JLabel lblNewLabel = new JLabel("New label");
+		System.out.println(" "+i);
+		JLabel lblNewLabel = new JLabel("New label"+i);
 		lblNewLabel.setForeground(Color.YELLOW);
 		add(lblNewLabel, BorderLayout.WEST);
+		pre=lblNewLabel;
+		i++;
+		addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				i = i+1;
+				System.out.println(" "+i);
+				remove(pre);
+				JLabel lblNewLabel = new JLabel("New label"+i);
+				lblNewLabel.setForeground(Color.YELLOW);
+				add(lblNewLabel, BorderLayout.WEST);
+				pre=lblNewLabel;
+				//repaint();
+				//removeAll();
+				updateUI();
+				
+			}
+		});
+		
 
 	}
+	void updata(){
+		i = i+1;
+		System.out.println(" "+i);
+		remove(pre);
+		JLabel lblNewLabel = new JLabel("New label"+i);
+		lblNewLabel.setForeground(Color.YELLOW);
+		add(lblNewLabel, BorderLayout.WEST);
+		pre=lblNewLabel;
+	}
+	
 
 }

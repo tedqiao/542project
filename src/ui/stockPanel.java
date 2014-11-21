@@ -39,24 +39,31 @@ public class stockPanel extends JPanel {
 				isblack=false;
 				add(s1);
 			}
-			
-			
+					
 		}
-		/*stockInfo s1 = new stockInfo("3123123","shenzhenkeji",1231,-10.0);
-		 // stockInfo s1 = new stockInfo("3123123","shenzhenkeji",1231,-10.0); 
-	        stockInfo s2 = new stockInfo("3123123","shenzhenkeji",1231,-10.0);
-	        stockInfo s3 = new stockInfo("3123123","shenzhenkeji",1231,-10.0);
-	        stockInfo s4 = new stockInfo("3123123","shenzhenkeji",1231,-10.0);
 		
-		add(new stockInfo("3123123","shenzhenkeji",1231,-10.0));
-		add(new stockInfo("3123123","shenzhenkeji",1231,-10.0));
-		add(new stockInfo("3123123","shenzhenkeji",1231,-10.0));
-		add(new stockInfo("3123123","shenzhenkeji",1231,-10.0));
-		add(new stockInfo("3123123","shenzhenkeji",1231,-10.0));
-		add(new stockInfo("3123123","shenzhenkeji",1231,-10.0));
-		add(new stockInfo("3123123","shenzhenkeji",1231,-10.0));
-		add(new stockInfo("3123123","shenzhenkeji",1231,-10.0));
-		add(new stockInfo("3123123","shenzhenkeji",1231,-10.0));
-		add(new stockInfo("3123123","shenzhenkeji",1231,-10.0));*/
+	}
+	void updata() throws Exception{
+		this.removeAll();
+		List<StockCompany> list =  DAOFactory.getIStockDAOInstance().getAllStocks();
+		
+		for(StockCompany sc:list){
+			//System.out.println(sc.getName());
+			//System.out.println(sc.getPrice_share());
+			//System.out.println(sc.getVariation_Range());
+			if(!isblack){
+			stockInfo s1 = new stockInfo(sc.getSid(),sc.getName(),sc.getPrice_share(),sc.getVariation_Range());
+			s1.setBackground(Color.gray);
+			add(s1);
+			isblack=true;
+			}else{
+				stockInfo s1 = new stockInfo(sc.getSid(),sc.getName(),sc.getPrice_share(),sc.getVariation_Range());
+				s1.setBackground(Color.black);
+				isblack=false;
+				add(s1);
+			}
+		}
+		this.updateUI();
+		
 	}
 }

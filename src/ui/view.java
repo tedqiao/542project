@@ -1,42 +1,45 @@
 package ui;
+import java.util.*;
 
 import javax.swing.JFrame;
-public class view extends JFrame {
+public class view{
 
     public static void main(String[] args) throws Exception {
-    	 view v = new view();
+    	newThread t11= new newThread();
+    	Thread t1 = new  Thread(t11);
+    	t1.start();
     }
-    public view() throws Exception {
-        init();
-    }
-
-    private void init() throws Exception {
-     
-    	User_Frame my=new User_Frame();
-
-    	my.setVisible(true);
-    	my.setResizable(false);
-        
-        this.setDefaultCloseOperation(EXIT_ON_CLOSE);
-    }
+   
 } 
 
-/*class newThread implements Runnable{
+class newThread implements Runnable{
 	 public int i=0;
-	 view v = new view();
+	 //view v = new view();
+	 User_Frame my;
 	@Override
 	public void run() {
+		try {
+			my=new User_Frame("1");
+			my.setVisible(true);
+	    	my.setResizable(false);
+	        my.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		} catch (Exception e1) {
+			e1.printStackTrace();
+		}
 		while(i!=100){
 			try {
-				Thread.sleep(1000);
+				Thread.sleep(10000);
+				my.getTotals().updata();
+				my.getTotals().updateUI();
+				my.getstockpanel().updata();
+				my.getstockpanel().updateUI();
 			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (Exception e) {
 				e.printStackTrace();
 			}
-			System.out.println("this is "+i);
-			i++;
+		
 		}
 		
 	}	
 }
-*/
