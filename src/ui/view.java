@@ -15,19 +15,19 @@ public class view{
 
 class newThread implements Runnable{
 	 public int i=0;
-	 //view v = new view();
+	 private String UserID;
 	 User_Frame my;
 	@Override
 	public void run() {
 		try {
-			my=new User_Frame("1");
+			my=new User_Frame(UserID);
 			my.setVisible(true);
 	    	my.setResizable(false);
 	        my.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		} catch (Exception e1) {
 			e1.printStackTrace();
 		}
-		while(i!=100){
+		while(true){
 			try {
 				Thread.sleep(10000);
 				my.getTotals().updata();
@@ -43,4 +43,8 @@ class newThread implements Runnable{
 		}
 		
 	}	
+	
+	void setUserID(String UserID){
+		this.UserID = UserID;
+	}
 }

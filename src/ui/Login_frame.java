@@ -19,7 +19,7 @@ public class Login_frame extends JFrame {
 	private JPanel contentPane;
 	private JTextField textField;
 	private JPasswordField passwordField;
-
+	private String UserID;
 	/**
 	 * Launch the application.
 	 */
@@ -69,10 +69,13 @@ public class Login_frame extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				System.out.println("   "+textField.getText());
 				System.out.println("   "+passwordField.getText());
+				UserID = textField.getText();
 				
 				newThread t11= new newThread();
 		    	Thread t1 = new  Thread(t11);
+		    	t11.setUserID(UserID);
 		    	t1.start();
+		    	//close current window
 		    	dispose();
 				
 			}
