@@ -52,6 +52,8 @@ public class UserStock extends JFrame {
 					System.out.println("are you king me?");
 					//textArea.append("do not use String!!!!");
 					//textPane.setText("are you king me?");
+					//break;
+					return;
 				}
 				System.out.println("buy stock amount  "+textField.getText());
 			}
@@ -76,7 +78,7 @@ public class UserStock extends JFrame {
 		textField.setColumns(10);
 		
 		JTextPane textPane = new JTextPane();
-		textPane.setBounds(209, 183, 117, 16);
+		textPane.setBounds(86, 151, 117, 16);
 		textPane.setText("are you king me?");
 		//textPane.set
 		contentPane.add(textPane);
