@@ -5,9 +5,10 @@ import javax.swing.JFrame;
 public class view{
 
     public static void main(String[] args) throws Exception {
-    	newThread t11= new newThread();
-    	Thread t1 = new  Thread(t11);
-    	t1.start();
+    	
+    	Login_frame lo = new Login_frame();
+    	lo.setVisible(true);
+    	
     }
    
 } 
