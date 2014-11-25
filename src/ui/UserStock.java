@@ -29,7 +29,7 @@ public class UserStock extends JFrame {
 	private JTextField textField;
 	private JTextPane textPane;
 	
-	public UserStock() {
+	public UserStock(String stockID,String UserID) {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(700, 100, 450, 300);
 		contentPane = new JPanel();
@@ -76,11 +76,5 @@ public class UserStock extends JFrame {
 		textField.setBounds(93, 183, 104, 28);
 		contentPane.add(textField);
 		textField.setColumns(10);
-		
-		JTextPane textPane = new JTextPane();
-		textPane.setBounds(86, 151, 117, 16);
-		textPane.setText("are you king me?");
-		//textPane.set
-		contentPane.add(textPane);
 	}
 }

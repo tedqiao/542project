@@ -27,7 +27,7 @@ public class UserInformation extends JPanel {
 	/**
 	 * Create the panel.
 	 */
-	public UserInformation(String name,String sex,String account,double money,String[] stockID) {
+	public UserInformation(final String userID,String name,String sex,String account,double money,String[] stockID) {
 		setBackground(Color.BLACK);
 		setLayout(new FormLayout(new ColumnSpec[] {
 				ColumnSpec.decode("188px:grow"),},
@@ -72,7 +72,7 @@ public class UserInformation extends JPanel {
 					String[] s = ((String) mylist.getSelectedValue()).split(" ");
 					Integer.parseInt(s[0]);
 					System.out.println("return ID"+s[0]);
-					UserStock us = new UserStock();
+					UserStock us = new UserStock(s[0],userID);
 					us.setVisible(true);
 					us.setResizable(false);
 					us.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);

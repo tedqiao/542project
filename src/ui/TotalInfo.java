@@ -18,6 +18,7 @@ import java.awt.event.MouseEvent;
 
 import javax.swing.JTextArea;
 
+import vo.Events;
 import vo.Market;
 import factory.DAOFactory;
 
@@ -27,6 +28,7 @@ public class TotalInfo extends JPanel {
 		//private String index;
 		private JScrollPane event;
 		private Market m;
+		private Events events;
 		//TotalInfo total;
 	/**
 	 * Create the panel.
@@ -36,6 +38,8 @@ public class TotalInfo extends JPanel {
 		//this.index=index;
 		setBackground(Color.BLACK);
 		setLayout(null);
+		events = DAOFactory.getIEventsInstance().getRandomEvent();
+		
 		//DAOFactory.getIMarketDAOInstance().getMarket().getMarketIndex();
 		//DAOFactory.getIMarketDAOInstance().getMarket().getOverallCapital();
 		m=DAOFactory.getIMarketDAOInstance().getMarket();
@@ -71,7 +75,7 @@ public class TotalInfo extends JPanel {
 		textArea.setForeground(Color.BLUE);
 		textArea.setBackground(Color.LIGHT_GRAY);
 		textArea.setBounds(109, 6, 200, 42);
-		textArea.setText("jin tian shi ge hao ri zi a!!!!!!!\nasdfsadfsadfdsafasdfasdfsadfasdfasdfsadfsa\ndfsadfadsfasdfasdfasdfasdfadsf");
+		textArea.setText(events.getincident());
 		//textArea.is();
 		JScrollPane scroll = new JScrollPane(textArea);
 		scroll.setBounds(139, 13, 394, 73);
@@ -88,6 +92,7 @@ public class TotalInfo extends JPanel {
 				remove(precap);
 				remove(event);
 				try {
+					events = DAOFactory.getIEventsInstance().getRandomEvent();
 					m=DAOFactory.getIMarketDAOInstance().getMarket();
 				} catch (Exception e1) {
 					// TODO Auto-generated catch block
@@ -115,7 +120,7 @@ public class TotalInfo extends JPanel {
 				textArea.setForeground(Color.BLUE);
 				textArea.setBackground(Color.LIGHT_GRAY);
 				textArea.setBounds(139, 13, 394, 73);
-				textArea.setText("jin tian shi ge hao ri f");
+				textArea.setText(events.getincident());
 				//textArea.is();
 				JScrollPane scroll = new JScrollPane(textArea);
 				scroll.setBounds(139, 13, 394, 73);
@@ -133,6 +138,7 @@ public class TotalInfo extends JPanel {
 	void updata() throws Exception{
 		i = i+1;
 		System.out.println(" "+i);
+		events = DAOFactory.getIEventsInstance().getRandomEvent();
 		remove(preinde);
 		remove(prevar);
 		remove(precap);
@@ -160,7 +166,7 @@ public class TotalInfo extends JPanel {
 		textArea.setForeground(Color.BLUE);
 		textArea.setBackground(Color.LIGHT_GRAY);
 		textArea.setBounds(139, 13, 394, 73);
-		textArea.setText("jin tian shi ge hao ri f");
+		textArea.setText(events.getincident());
 		//textArea.is();
 		JScrollPane scroll = new JScrollPane(textArea);
 		scroll.setBounds(139, 13, 394, 73);
