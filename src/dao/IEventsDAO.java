@@ -4,17 +4,17 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
-import vo.Market;
+import vo.Events;
 import dbc.DatabaseConnection;
-/** The Overall Market logic class     
+/** The random events logic class     
 * @author Chengjiao Yang  
 */  
-public class IMarketDAO {
+public class IEventsDAO {
 	private DatabaseConnection dbc = null;
 	private Connection conn = null;
 	private PreparedStatement pstmt = null;
 	
-	public IMarketDAO(){// instance class
+	public IEventsDAO(){// instance class
 		try {
 			dbc = new DatabaseConnection();
 		} catch (Exception e) {
@@ -23,21 +23,21 @@ public class IMarketDAO {
 		this.conn = this.dbc.getConnection();
 	}
 	
-	/** This function is to get the Overall Market Information 
+	/** This function is to get the random event 
 	  * @param null  
-	  * @return Market VO
+	  * @return Events VO
 	  * @exception exceptions database exceptions
 	  */ 
-	public Market getMarket() throws Exception {
-		Market market = new Market();
+	public Events getRandomEvent() throws Exception {
+		Events event = new Events();
 		try {
-			String sql = "select marketIndex,VariationRange,OverallCapital from market";
+			String sql = "SELECT eventID,incident,Variation_Range FROM events order by rand() limit 1";
 			this.pstmt = this.conn.prepareStatement(sql);
 			ResultSet rs = this.pstmt.executeQuery();// get the result set
 			if (rs.next()) {
-				market.setMarketIndex(rs.getString("marketIndex"));
-				market.setVariationRange(rs.getDouble("VariationRange"));
-				market.setOverallCapital(rs.getDouble("OverallCapital"));
+				event.seteventID(rs.getInt("eventID"));
+				event.setincident(rs.getString("incident"));
+				event.setVariation_Range(rs.getDouble("Variation_Range"));
 			}
 		} catch (Exception e) {
 			throw e;
@@ -45,6 +45,6 @@ public class IMarketDAO {
 			this.pstmt.close();
 			this.dbc.close();
 		}
-		return market;
+		return event;
 	}
 }

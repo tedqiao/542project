@@ -18,4 +18,7 @@ public class DAOFactory {
 	public static IMarketDAO getIMarketDAOInstance() {
 		return new IMarketDAO();
 	}
+	public static IEventsDAO getIEventsInstance() {
+		return new IEventsDAO();
+	}
 }
