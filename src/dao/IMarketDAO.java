@@ -51,13 +51,12 @@ public class IMarketDAO {
 		return market;
 	}
 	/** This function is to get the Overall Market Information after effected by event
-	  * @param null  
+	  * @param Events  
 	  * @return Market VO
 	 * @throws Exception 
 	  * @exception exceptions database exceptions
 	  */ 
-	public Market getMarketAfterEvent() throws Exception{
-		Events event = DAOFactory.getIEventsInstance().getRandomEvent();
+	public Market getMarketAfterEvent(Events event) throws Exception{
 		double range = event.getVariation_Range();
 		
 		Market market = getMarket();
