@@ -61,4 +61,27 @@ public class IInvestorsDAO {
 		}
 		return result;
 	}
+	/** This function is to verify the user and password
+	  * @param String userID, String password
+	  * @return true/false
+	  * @throws Exception 
+	  * @exception exceptions database exceptions
+	  */ 
+	public boolean loginVerify(String userID, String password) throws Exception {
+		boolean result = false;
+		try {
+			String sql = "select 1 from investors where userID = ? and password = ?";
+			this.pstmt = this.conn.prepareStatement(sql);
+			this.pstmt.setString(1, userID);
+			this.pstmt.setString(2, password);
+			ResultSet rs = this.pstmt.executeQuery();
+			if (rs.next()) result = true;
+		} catch (Exception e) {
+			throw e;
+		} finally {
+			this.pstmt.close();
+			this.dbc.close();
+		}
+		return result;
+	}
 }
