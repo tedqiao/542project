@@ -25,6 +25,7 @@ import java.awt.Label;
 
 import javax.swing.JTextPane;
 
+import vo.Stock;
 import factory.DAOFactory;
 
 public class UserStock extends JFrame {
@@ -32,8 +33,9 @@ public class UserStock extends JFrame {
 	private JPanel contentPane;
 	private JTextField textField;
 	private JTextPane textPane;
-	
-	public UserStock(final String stockID,final String UserID) {
+	private final Stock stock;
+	public UserStock(final String stockID,final String UserID) throws Exception {
+		stock = DAOFactory.getIStockDAOInstance().getStockByID(stockID);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(700, 100, 450, 300);
 		contentPane = new JPanel();
@@ -59,8 +61,24 @@ public class UserStock extends JFrame {
 					//break;
 					return;
 				}
-				//DAOFactory.getIHoldDAOInstance().buyAmount(UserID, stockID, stock_price,Integer.parseInt(textField.getText()));
-				System.out.println("buy stock amount  "+textField.getText());
+				
+					try {
+						DAOFactory.getIHoldDAOInstance().buyAmount(UserID, stockID, stock.getPrice_share(),Integer.parseInt(textField.getText()));
+					} catch (NumberFormatException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+						return;
+					} catch (Exception e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+						return;
+					}
+					System.out.println("buy stock amount  "+UserID+"   "+stockID+"    "+textField.getText());
+				
+					// TODO Auto-generated catch block
+					
+				
+				
 				
 			}
 		});

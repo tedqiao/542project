@@ -72,10 +72,17 @@ public class UserInformation extends JPanel {
 					String[] s = ((String) mylist.getSelectedValue()).split(" ");
 					Integer.parseInt(s[0]);
 					System.out.println("return ID"+s[0]);
-					UserStock us = new UserStock(s[0],userID);
-					us.setVisible(true);
-					us.setResizable(false);
-					us.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+					UserStock us;
+					try {
+						us = new UserStock(s[0],userID);
+						us.setVisible(true);
+						us.setResizable(false);
+						us.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+					} catch (Exception e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
+					
 				}
 			}
 		});
