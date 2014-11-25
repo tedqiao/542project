@@ -23,7 +23,7 @@ CREATE TABLE `investors` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 CREATE TABLE `market` (
-  `marketIndex` char(50) DEFAULT NULL,
+  `marketIndex` int(11) DEFAULT NULL,
   `VariationRange` double DEFAULT NULL,
   `OverallCapital` double DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -38,6 +38,12 @@ CREATE TABLE `stock` (
   UNIQUE KEY `Cid_UNIQUE` (`Cid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+CREATE TABLE `events` (
+  `eventID` int(11) NOT NULL,
+  `incident` varchar(256) DEFAULT NULL,
+  `Variation_Range` double NOT NULL,
+  PRIMARY KEY (`eventID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 
 
