@@ -19,9 +19,13 @@ import java.awt.Canvas;
 import java.awt.Color;
 
 import javax.swing.JList;
+
 import java.awt.TextArea;
 import java.awt.Label;
+
 import javax.swing.JTextPane;
+
+import factory.DAOFactory;
 
 public class UserStock extends JFrame {
 
@@ -29,7 +33,7 @@ public class UserStock extends JFrame {
 	private JTextField textField;
 	private JTextPane textPane;
 	
-	public UserStock(String stockID,String UserID) {
+	public UserStock(final String stockID,final String UserID) {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(700, 100, 450, 300);
 		contentPane = new JPanel();
@@ -55,7 +59,9 @@ public class UserStock extends JFrame {
 					//break;
 					return;
 				}
+				//DAOFactory.getIHoldDAOInstance().buyAmount(UserID, stockID, stock_price,Integer.parseInt(textField.getText()));
 				System.out.println("buy stock amount  "+textField.getText());
+				
 			}
 		});
 		btnNewButton.setBounds(86, 223, 117, 29);
@@ -65,8 +71,17 @@ public class UserStock extends JFrame {
 		btnNewButton_1.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				
-				System.out.println("sell stock");
+				try{
+					Integer.parseInt(textField.getText());
+					}catch(Exception e1){
+						//e1.
+						System.out.println("are you king me?");
+						//textArea.append("do not use String!!!!");
+						//textPane.setText("are you king me?");
+						//break;
+						return;
+					}
+				System.out.println("sell stock"+textField.getText());
 			}
 		});
 		btnNewButton_1.setBounds(259, 223, 117, 29);
