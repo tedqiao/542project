@@ -118,6 +118,53 @@ public class IHoldDAO {
 			this.dbc.close();
 		}
 	}
+	/** This function allow the investor to buy the amount stock, make sure the investor has enough money--
+	  * @param String investorID, String stockID, double stock_price, int amount
+	  * @return true/false
+	  * @throws Exception 
+	  * @exception exceptions database exceptions
+	  */ 
+	public boolean buyAmount(String investorID, String stockID, double stock_price, int amount) throws Exception {	
+		double shares = getshares(investorID,stockID);
+		boolean isNewStock = shares == 0?true:false;
+		//see if investor has enough money
+		double money_require = amount * stock_price;
+		Investors investor = new Investors();
+		investor.setuserID(investorID);
+		investor = DAOFactory.getIInvestorDAOInstance().getInvestorById(investor);
+		if(investor.getAssets()<money_require) return false;
+		try {
+			if(isNewStock){ 
+				//insert the new relation of investor and stock
+				String sql = "insert into hold values(?,?,?)";
+				this.pstmt = this.conn.prepareStatement(sql);
+				this.pstmt.setString(1, investorID);
+				this.pstmt.setString(2, stockID);
+				this.pstmt.setInt(3, amount);
+				int rs = this.pstmt.executeUpdate();
+				if(rs<1) return false;
+			}
+			else{
+				//update the data in hold
+				String sql = "UPDATE hold set shares = shares+? where userID = ? and Sid = ?";
+				this.pstmt = this.conn.prepareStatement(sql);
+				this.pstmt.setInt(1, amount);
+				this.pstmt.setString(2, investorID);
+				this.pstmt.setString(3, stockID);
+				int rs = this.pstmt.executeUpdate();
+				if(rs<1) return false;
+			}
+			//calculate increase money and update the investor asset
+			return DAOFactory.getIInvestorDAOInstance().increaseMoney(investorID, -money_require);
+			
+			//update the record(transaction record) table
+		} catch (Exception e) {
+			throw e;
+		} finally {
+			this.pstmt.close();
+			this.dbc.close();
+		}
+	}
 	/** This function is to get the shares of the particular investor and stock
 	  * @param String investorID, String stockID
 	  * @return double shares
