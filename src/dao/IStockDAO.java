@@ -119,4 +119,32 @@ public class IStockDAO {
 		}
 		return list;
 	}
+	/** This function is to get the stocks Information by the stockID
+	  * @param String stockID
+	  * @return Stock stock
+	  * @throws Exception 
+	  * @exception exceptions database exceptions
+	  */
+	public Stock getStockByID(String stockID) throws Exception{
+		Stock stock = new Stock();
+		try {
+			String sql = "SELECT Sid,Price_share,OverallShares,Variation_Range,Cid FROM stock where Sid = ?";
+			this.pstmt = this.conn.prepareStatement(sql);
+			this.pstmt.setString(1, stockID);
+			ResultSet rs = this.pstmt.executeQuery();
+			if (rs.next()) {
+				stock.setSid(rs.getString("Sid"));
+				stock.setPrice_share(rs.getDouble("Price_share"));
+				stock.setOverallCapital(rs.getInt("OverallShares"));
+				stock.setVariation_Range(rs.getDouble("Variation_Range"));
+				stock.setCid(rs.getString("Cid"));
+			}
+		} catch (Exception e) {
+			throw e;
+		} finally {
+			this.pstmt.close();
+			this.dbc.close();
+		}
+		return stock;
+	}
 }
