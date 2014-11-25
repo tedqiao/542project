@@ -45,7 +45,10 @@ public class stockInfo extends JPanel {
 				ColumnSpec.decode("93px"),
 				ColumnSpec.decode("93px"),
 				ColumnSpec.decode("93px"),
-				ColumnSpec.decode("93px"),},
+				ColumnSpec.decode("93px"),
+				ColumnSpec.decode("93px"),
+				ColumnSpec.decode("93px"),
+				},
 			new RowSpec[] {
 				FormFactory.NARROW_LINE_GAP_ROWSPEC,
 				RowSpec.decode("17px"),}));
@@ -56,11 +59,11 @@ public class stockInfo extends JPanel {
 		
 		JLabel lblNewLabel = new JLabel(StockName);
 		lblNewLabel.setForeground(Color.YELLOW);
-		add(lblNewLabel, "3, 2, center, center");
+		add(lblNewLabel, "4, 2, center, center");
 		
 		JLabel lblNewLabel_1 = new JLabel(""+double1);
 		lblNewLabel_1.setForeground(Color.GREEN);
-		add(lblNewLabel_1, "4, 2, center, fill");
+		add(lblNewLabel_1, "6, 2, center, fill");
 		
 		JLabel lblNewLabel_2 = new JLabel(""+d);
 		if(d>0){
@@ -68,7 +71,7 @@ public class stockInfo extends JPanel {
 		}else {
 			lblNewLabel_2.setForeground(Color.GREEN);
 		}
-		add(lblNewLabel_2, "5, 2, center, center");
+		add(lblNewLabel_2, "7, 2, center, center");
 
 	}
 

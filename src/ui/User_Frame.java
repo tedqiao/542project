@@ -53,23 +53,23 @@ public class User_Frame extends JFrame {
 			sid[i] = l.get(i).getSid()+"   "+l.get(i).getName();
 		}
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 592, 430);
+		setBounds(100, 100, 800, 600);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		UserInformation user = new UserInformation(invest.getuserName(),invest.getsex(),invest.getuserID(),invest.getAssets(),sid);
 		user.setBorder(new LineBorder(Color.YELLOW, 1, true));
-		user.setBounds(0, 0, 193, 402);
+		user.setBounds(0, 0, 193, 598);
 		getContentPane().add(user);
 		st = new stockPanel();
-		st.setBounds(192, 105, 400, 173);
+		st.setBounds(196, 155, 800-200, 600-180);
 		JScrollPane scroll = new JScrollPane(st);
-		scroll.setBounds(192, 105, 400, 297);
+		scroll.setBounds(196, 155, 800-200, 600-180);
 		getContentPane().add(scroll);
 		t = new TotalInfo();
-		t.setSize(400, 90);
-		t.setLocation(192, 0);
+		t.setSize(600, 120);
+		t.setLocation(196, 0);
 		getContentPane().add(t);
 	
 	}
@@ -81,6 +81,8 @@ public class User_Frame extends JFrame {
 	stockPanel getstockpanel(){
 		return st;
 	}
+	
+	
 	
 		
 
