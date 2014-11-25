@@ -20,12 +20,15 @@ import javax.swing.JTextArea;
 
 public class TotalInfo extends JPanel {
 		private static int i=1;
-		JLabel pre;
+		private JLabel preinde,prevar,precap;
+		//private String index;
+		private JScrollPane event;
 		//TotalInfo total;
 	/**
 	 * Create the panel.
 	 */
 	public TotalInfo() {
+		//this.index=index;
 		setBackground(Color.BLACK);
 		setLayout(null);
 		
@@ -37,43 +40,66 @@ public class TotalInfo extends JPanel {
 		lblTotal.setFont(new Font("Lucida Grande", Font.PLAIN, 46));
 		add(lblTotal);
 		System.out.println(" "+i);
-		JLabel lblNewLabel = new JLabel("New label"+i);
+		JLabel lblNewLabel = new JLabel("index"+i);
 		lblNewLabel.setBounds(6, 87, 69, 38);
 		lblNewLabel.setForeground(Color.YELLOW);
 		add(lblNewLabel);
-		pre=lblNewLabel;
+		preinde = lblNewLabel;
 		
-		JLabel lblNewLabel_1 = new JLabel("New label");
+		JLabel lblNewLabel_1 = new JLabel("variation");
 		lblNewLabel_1.setForeground(Color.YELLOW);
-		lblNewLabel_1.setBounds(128, 98, 61, 16);
+		lblNewLabel_1.setBounds(172, 87, 118, 38);
 		add(lblNewLabel_1);
-		
-		JLabel lblNewLabel_2 = new JLabel("New label");
+		prevar = lblNewLabel_1;
+		JLabel lblNewLabel_2 = new JLabel("what a shit");
 		lblNewLabel_2.setForeground(Color.YELLOW);
-		lblNewLabel_2.setBounds(246, 98, 61, 16);
+		lblNewLabel_2.setBounds(335, 87, 69, 38);
 		add(lblNewLabel_2);
-		
+		precap = lblNewLabel_2;
 		JTextArea textArea = new JTextArea();
 		textArea.setForeground(Color.BLUE);
 		textArea.setBackground(Color.LIGHT_GRAY);
 		textArea.setBounds(109, 6, 200, 42);
-		textArea.setText("jin tian shi ge hao ri zi a!!!!!!!asdfsadfsadfdsafasdfasdfsadfasdfasdfsadfsadfsadfadsfasdfasdfasdfasdfadsf");
+		textArea.setText("jin tian shi ge hao ri zi a!!!!!!!/nasdfsadfsadfdsafasdfasdfsadfasdfasdfsadfsadfsadfadsfasdfasdfasdfasdfadsf");
 		//textArea.is();
 		JScrollPane scroll = new JScrollPane(textArea);
-		scroll.setBounds(109, 13, 335, 55);
+		scroll.setBounds(109, 13, 394, 73);
 		add(scroll);
+		event=scroll;
 		i++;
 		addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				i = i+1;
 				System.out.println(" "+i);
-				remove(pre);
-				JLabel lblNewLabel = new JLabel("New label"+i);
-				lblNewLabel.setForeground(Color.YELLOW);
-				lblNewLabel.setBounds(6, 87, 69, 38);
-				add(lblNewLabel, BorderLayout.WEST);
-				pre=lblNewLabel;
+				remove(preinde);
+				remove(prevar);
+				remove(precap);
+				remove(event);
+				JLabel lblNewLabel1 = new JLabel("index"+i);
+				lblNewLabel1.setForeground(Color.YELLOW);
+				lblNewLabel1.setBounds(6, 87, 69, 38);
+				add(lblNewLabel1, BorderLayout.WEST);
+				preinde=lblNewLabel1;
+				JLabel lblNewLabel_1 = new JLabel("variation");
+				lblNewLabel_1.setForeground(Color.YELLOW);
+				lblNewLabel_1.setBounds(172, 87, 118, 38);
+				add(lblNewLabel_1);
+				prevar = lblNewLabel_1;
+				JLabel lblNewLabel_2 = new JLabel("what a shit");
+				lblNewLabel_2.setForeground(Color.YELLOW);
+				lblNewLabel_2.setBounds(335, 87, 69, 38);
+				add(lblNewLabel_2);
+				precap = lblNewLabel_2;
+				JTextArea textArea = new JTextArea();
+				textArea.setForeground(Color.BLUE);
+				textArea.setBackground(Color.LIGHT_GRAY);
+				textArea.setBounds(109, 6, 200, 42);
+				textArea.setText("jin tian shi ge hao ri zi a");
+				JScrollPane scroll = new JScrollPane(textArea);
+				scroll.setBounds(109, 13, 394, 73);
+				add(scroll);
+				event=scroll;
 				//repaint();
 				//removeAll();
 				updateUI();
@@ -86,11 +112,35 @@ public class TotalInfo extends JPanel {
 	void updata(){
 		i = i+1;
 		System.out.println(" "+i);
-		remove(pre);
-		JLabel lblNewLabel = new JLabel("New label"+i);
-		lblNewLabel.setForeground(Color.YELLOW);
-		lblNewLabel.setBounds(6, 87, 69, 38);
-		add(lblNewLabel, BorderLayout.WEST);
-		pre=lblNewLabel;
+		remove(preinde);
+		remove(prevar);
+		remove(precap);
+		remove(event);
+		JLabel lblNewLabel1 = new JLabel("index"+i);
+		lblNewLabel1.setForeground(Color.YELLOW);
+		lblNewLabel1.setBounds(6, 87, 69, 38);
+		add(lblNewLabel1, BorderLayout.WEST);
+		preinde=lblNewLabel1;
+		JLabel lblNewLabel_1 = new JLabel("variation"+i);
+		lblNewLabel_1.setForeground(Color.YELLOW);
+		lblNewLabel_1.setBounds(172, 87, 118, 38);
+		add(lblNewLabel_1);
+		prevar = lblNewLabel_1;
+		JLabel lblNewLabel_2 = new JLabel("what"+i);
+		lblNewLabel_2.setForeground(Color.YELLOW);
+		lblNewLabel_2.setBounds(335, 87, 69, 38);
+		add(lblNewLabel_2);
+		precap = lblNewLabel_2;
+		JTextArea textArea = new JTextArea();
+		textArea.setForeground(Color.BLUE);
+		textArea.setBackground(Color.LIGHT_GRAY);
+		textArea.setBounds(109, 6, 200, 42);
+		textArea.setText("jin tian shi ge hao ri f");
+		//textArea.is();
+		JScrollPane scroll = new JScrollPane(textArea);
+		scroll.setBounds(109, 13, 394, 73);
+		add(scroll);
+		event=scroll;
+		
 	}
 }
