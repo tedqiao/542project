@@ -6,13 +6,16 @@ public class DAOFactory {
 	public static ICompanyDAO getICompanyDAOInstance() {// get Dao instance
 		return new ICompanyDAO();
 	}
-	public static IHoldDAO getIHoldDAOInstance() {// get Dao instance
+	public static IHoldDAO getIHoldDAOInstance() {
 		return new IHoldDAO();
 	}
-	public static IInvestorsDAO getIInvestorDAOInstance() {// get Dao instance
+	public static IInvestorsDAO getIInvestorDAOInstance() {
 		return new IInvestorsDAO();
 	}
-	public static IStockDAO getIStockDAOInstance() {// get Dao instance
+	public static IStockDAO getIStockDAOInstance() {
 		return new IStockDAO();
+	}
+	public static IMarketDAO getIMarketDAOInstance() {
+		return new IMarketDAO();
 	}
 }
