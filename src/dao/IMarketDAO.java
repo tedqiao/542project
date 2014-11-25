@@ -1,11 +1,14 @@
 package dao;
 
+import java.awt.Event;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
+import vo.Events;
 import vo.Market;
 import dbc.DatabaseConnection;
+import factory.DAOFactory;
 /** The Overall Market logic class     
 * @author Chengjiao Yang  
 */  
@@ -35,7 +38,7 @@ public class IMarketDAO {
 			this.pstmt = this.conn.prepareStatement(sql);
 			ResultSet rs = this.pstmt.executeQuery();// get the result set
 			if (rs.next()) {
-				market.setMarketIndex(rs.getString("marketIndex"));
+				market.setMarketIndex(rs.getInt("marketIndex"));
 				market.setVariationRange(rs.getDouble("VariationRange"));
 				market.setOverallCapital(rs.getDouble("OverallCapital"));
 			}
@@ -45,6 +48,33 @@ public class IMarketDAO {
 			this.pstmt.close();
 			this.dbc.close();
 		}
+		return market;
+	}
+	/** This function is to get the Overall Market Information after effected by event
+	  * @param null  
+	  * @return Market VO
+	 * @throws Exception 
+	  * @exception exceptions database exceptions
+	  */ 
+	public Market getMarketAfterEvent() throws Exception{
+		Events event = DAOFactory.getIEventsInstance().getRandomEvent();
+		double range = event.getVariation_Range();
+		
+		Market market = getMarket();
+		double randomVarible = 1-Math.random()*2;//random range from -1 to +1
+		double variation_range = randomVarible*market.getVariationRange();
+		double variation_after_event = variation_range + range*Math.abs(variation_range);
+		if(variation_after_event>Math.abs(market.getVariationRange())){ //variation are limited in VariationRange range
+			variation_after_event = Math.abs(market.getVariationRange());
+		}
+		else if(variation_after_event<-Math.abs(market.getVariationRange())){
+			variation_after_event = -Math.abs(market.getVariationRange());
+		}
+		
+		int marketIndex_after_event = (int)(market.getMarketIndex()+ market.getMarketIndex()*variation_after_event);
+		market.setMarketIndex(marketIndex_after_event);
+		market.setVariationRange(variation_after_event);
+		
 		return market;
 	}
 }
