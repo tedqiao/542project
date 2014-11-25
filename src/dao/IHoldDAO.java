@@ -6,6 +6,7 @@ import java.util.List;
 
 import vo.*;
 import dbc.DatabaseConnection;
+import factory.DAOFactory;
 
 public class IHoldDAO {
 	private DatabaseConnection dbc = null;
@@ -43,5 +44,100 @@ public class IHoldDAO {
 			this.dbc.close();
 		}
 		return list;
+	}
+	/** This function allow the investor sell all the stock he/she hold
+	  * @param investorID,stockID,stock_price
+	  * @return true/false
+	  * @throws Exception 
+	  * @exception exceptions database exceptions
+	  */ 
+	public boolean sellALL(String investorID, String stockID, double stock_price) throws Exception {	
+		double shares = getshares(investorID,stockID);
+		if(shares == 0) return false;
+		try {
+			//delete the data in hold
+			String sql = "delete from hold where userID = ? and Sid = ?";
+			this.pstmt = this.conn.prepareStatement(sql);
+			this.pstmt.setString(1, investorID);
+			this.pstmt.setString(2, stockID);
+			int rs = this.pstmt.executeUpdate();
+			if(rs<1) return false;
+			
+			//calculate increase money and update the investor asset
+			double money = shares * stock_price;
+			return DAOFactory.getIInvestorDAOInstance().increaseMoney(investorID, money);
+			
+			//update the record(transaction record) table
+		} catch (Exception e) {
+			throw e;
+		} finally {
+			this.pstmt.close();
+			this.dbc.close();
+		}
+	}
+	/** This function allow the investor sell the amount of stock he/she hold
+	  * @param String investorID, String stockID, double stock_price, int amount
+	  * @return true/false
+	  * @throws Exception 
+	  * @exception exceptions database exceptions
+	  */ 
+	public boolean sellAmount(String investorID, String stockID, double stock_price, int amount) throws Exception {	
+		double shares = getshares(investorID,stockID);
+		if(shares == 0||shares<amount) return false;
+		boolean isSellAll = shares == amount?true:false;
+		try {
+			if(isSellAll){
+				//delete the data in hold
+				String sql = "delete from hold where userID = ? and Sid = ?";
+				this.pstmt = this.conn.prepareStatement(sql);
+				this.pstmt.setString(1, investorID);
+				this.pstmt.setString(2, stockID);
+				int rs = this.pstmt.executeUpdate();
+				if(rs<1) return false;
+			}
+			else{
+				//update the data in hold
+				String sql = "UPDATE hold set shares = shares-? where userID = ? and Sid = ?";
+				this.pstmt = this.conn.prepareStatement(sql);
+				this.pstmt.setInt(1, amount);
+				this.pstmt.setString(2, investorID);
+				this.pstmt.setString(3, stockID);
+				int rs = this.pstmt.executeUpdate();
+				if(rs<1) return false;
+			}
+			
+			//calculate increase money and update the investor asset
+			double money = amount * stock_price;
+			return DAOFactory.getIInvestorDAOInstance().increaseMoney(investorID, money);
+			
+			//update the record(transaction record) table
+		} catch (Exception e) {
+			throw e;
+		} finally {
+			this.pstmt.close();
+			this.dbc.close();
+		}
+	}
+	/** This function is to get the shares of the particular investor and stock
+	  * @param String investorID, String stockID
+	  * @return double shares
+	  * @throws Exception 
+	  * @exception exceptions database exceptions
+	  */ 
+	public double getshares(String investorID, String stockID) throws Exception{
+		double shares = 0;
+		try {
+			String sql = "SELECT shares FROM hold where userID = ? and Sid = ?";
+			this.pstmt = this.conn.prepareStatement(sql);
+			this.pstmt.setString(1, investorID);
+			this.pstmt.setString(2, stockID);
+			ResultSet rs = this.pstmt.executeQuery();// get the result set
+			if (rs.next()) {
+				shares = rs.getDouble("shares");
+			}
+		} catch (Exception e) {
+			throw e;
+		}
+		return shares;
 	}
 }

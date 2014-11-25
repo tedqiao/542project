@@ -38,5 +38,27 @@ public class IInvestorsDAO {
 		}
 		return investor;
 	}
-	
+	/** This function is to increase amount of money for the investor
+	  * @param String investorID, double assets
+	  * @return true/false
+	  * @throws Exception 
+	  * @exception exceptions database exceptions
+	  */ 
+	public boolean increaseMoney(String investorID, double assets) throws Exception {
+		boolean result = true;
+		try {
+			String sql = "update investors set Assets = Assets+? where userID = ?";
+			this.pstmt = this.conn.prepareStatement(sql);
+			this.pstmt.setDouble(1, assets);
+			this.pstmt.setString(2, investorID);
+			int rs = this.pstmt.executeUpdate();
+			if(rs<1) return false;
+		} catch (Exception e) {
+			throw e;
+		} finally {
+			this.pstmt.close();
+			this.dbc.close();
+		}
+		return result;
+	}
 }
