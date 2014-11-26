@@ -12,22 +12,34 @@ import com.jgoodies.forms.layout.ColumnSpec;
 import com.jgoodies.forms.layout.RowSpec;
 import com.jgoodies.forms.factories.FormFactory;
 
+import factory.DAOFactory;
+
 import javax.swing.JFrame;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JList;
 import javax.swing.JButton;
 
+import vo.HoldCompany;
+import vo.Investors;
+
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.List;
 
 
 public class UserInformation extends JPanel {
 
+	controller con;
+	JScrollPane pre;
+	String userID;
+	JLabel preas;
 	/**
 	 * Create the panel.
 	 */
 	public UserInformation(final String userID,String name,String sex,String account,double money,String[] stockID) {
+		//con.setUi(this);
+		this.userID= userID;
 		setBackground(Color.BLACK);
 		setLayout(new FormLayout(new ColumnSpec[] {
 				ColumnSpec.decode("188px:grow"),},
@@ -59,10 +71,12 @@ public class UserInformation extends JPanel {
 		JLabel lblAssert = new JLabel("asset: "+money);
 		lblAssert.setForeground(Color.CYAN);
 		add(lblAssert, "1, 7, left, default");
+		preas=lblAssert;
 		//list the Stocks the user hold
 		JList list = new JList(stockID);
 		
 		JScrollPane scroll = new JScrollPane(list);	
+		pre = scroll;
 		list.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -74,7 +88,7 @@ public class UserInformation extends JPanel {
 					System.out.println("return ID"+s[0]);
 					UserStock us;
 					try {
-						us = new UserStock(s[0],userID);
+						us = new UserStock(s[0],userID,con);
 						us.setVisible(true);
 						us.setResizable(false);
 						us.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -96,5 +110,61 @@ public class UserInformation extends JPanel {
 		add(scroll, "1, 11, fill, fill");
 
 	}
+	void update() throws Exception{
+		remove(pre);
+		remove(preas);
+		Investors invest = new Investors();
+		invest.setuserID(userID);
+		invest = DAOFactory.getIInvestorDAOInstance().getInvestorById(invest);
+		
+		HoldCompany hold = new HoldCompany();
+		hold.setuserID(invest.getuserID());
+		List<HoldCompany> l = DAOFactory.getIHoldDAOInstance().getAllHoldById(hold);
+		
+		//System.out.println("---------------------------------");
+		//System.out.println(invest.getAssets());
+		String sid[] = new String[l.size()];
+		for(int i=0;i<l.size();i++){
+			sid[i] = l.get(i).getSid()+"   "+l.get(i).getName();
+		}
+		JList list = new JList(sid);
+		list.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				if(e.getClickCount()==2){
+					JList mylist=(JList)e.getSource();
+					
+					String[] s = ((String) mylist.getSelectedValue()).split(" ");
+					Integer.parseInt(s[0]);
+					System.out.println("return ID"+s[0]);
+					UserStock us;
+					try {
+						us = new UserStock(s[0],userID,con);
+						us.setVisible(true);
+						us.setResizable(false);
+						us.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+					} catch (Exception e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
+					
+				}
+			}
+		});
+		JScrollPane scroll = new JScrollPane(list);
+		list.setForeground(Color.YELLOW);
+		list.setBackground(Color.BLACK);
+		scroll.setSize(200, 200);
+		add(scroll, "1, 11, fill, fill");
+		//add(scroll);
+		pre=scroll;
+		JLabel lblAssert = new JLabel("asset: "+invest.getAssets());
+		lblAssert.setForeground(Color.CYAN);
+		add(lblAssert, "1, 7, left, default");
+		preas=lblAssert;
+		updateUI();
+		
+	}
+	
 
 }

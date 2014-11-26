@@ -33,6 +33,8 @@ public class User_Frame extends JFrame {
 	private String[] a;
 	private TotalInfo t;
 	private stockPanel st;
+	private UserInformation user;
+	//private controller con;
 	
 	public User_Frame(String userID) throws Exception {
 		Investors invest = new Investors();
@@ -58,7 +60,7 @@ public class User_Frame extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-		UserInformation user = new UserInformation(invest.getuserID(),invest.getuserName(),invest.getsex(),invest.getuserID(),invest.getAssets(),sid);
+		user = new UserInformation(invest.getuserID(),invest.getuserName(),invest.getsex(),invest.getuserID(),invest.getAssets(),sid);
 		user.setBorder(new LineBorder(Color.YELLOW, 1, true));
 		user.setBounds(0, 0, 193, 598);
 		getContentPane().add(user);
@@ -71,7 +73,7 @@ public class User_Frame extends JFrame {
 		t.setSize(600, 120);
 		t.setLocation(196, 0);
 		getContentPane().add(t);
-	
+		//con.setUi(user);
 	}
 	
 	TotalInfo getTotals(){
@@ -80,6 +82,10 @@ public class User_Frame extends JFrame {
 	
 	stockPanel getstockpanel(){
 		return st;
+	}
+	
+	UserInformation getUserInof(){	
+		return user;
 	}
 	
 	

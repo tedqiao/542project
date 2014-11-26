@@ -17,16 +17,20 @@ class newThread implements Runnable{
 	 public int i=0;
 	 private String UserID;
 	 User_Frame my;
+	
 	@Override
 	public void run() {
 		try {
+			
 			my=new User_Frame(UserID);
 			my.setVisible(true);
 	    	my.setResizable(false);
 	        my.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	        
 		} catch (Exception e1) {
 			e1.printStackTrace();
 		}
+		controller.setUi(my.getUserInof());
 		while(true){
 			try {
 				Thread.sleep(10000);
@@ -34,6 +38,7 @@ class newThread implements Runnable{
 				my.getTotals().updateUI();
 				my.getstockpanel().updata();
 				my.getstockpanel().updateUI();
+				//my.getUserInof().update();
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			} catch (Exception e) {

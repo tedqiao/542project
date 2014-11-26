@@ -100,19 +100,19 @@ public class TotalInfo extends JPanel {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
-				JLabel lblNewLabel1 = new JLabel("MarketIndex: "+m.getMarketIndex()+""+i);
+				JLabel lblNewLabel1 = new JLabel("MarketIndex: "+m.getMarketIndex()+"");
 				lblNewLabel1.setForeground(Color.YELLOW);
 				lblNewLabel1.setBounds(6, 87, 187, 38);
 				lblNewLabel1.setFont(new Font("Lucida Grande", Font.PLAIN, 17));
 				add(lblNewLabel1, BorderLayout.WEST);
 				preinde=lblNewLabel1;
-				JLabel lblNewLabel_1 = new JLabel(m.getVariationRange()+""+i);
+				JLabel lblNewLabel_1 = new JLabel(m.getVariationRange()+"");
 				lblNewLabel_1.setForeground(Color.YELLOW);
 				lblNewLabel_1.setBounds(219, 87, 182, 38);
 				lblNewLabel_1.setFont(new Font("Lucida Grande", Font.PLAIN, 17));
 				add(lblNewLabel_1);
 				prevar = lblNewLabel_1;
-				JLabel lblNewLabel_2 = new JLabel(m.getOverallCapital()+""+i);
+				JLabel lblNewLabel_2 = new JLabel(m.getOverallCapital()+"");
 				lblNewLabel_2.setForeground(Color.YELLOW);
 				lblNewLabel_2.setBounds(413, 87, 125, 38);
 				lblNewLabel_2.setFont(new Font("Lucida Grande", Font.PLAIN, 17));
@@ -146,19 +146,19 @@ public class TotalInfo extends JPanel {
 		remove(precap);
 		remove(event);
 		m=DAOFactory.getIMarketDAOInstance().getMarket();
-		JLabel lblNewLabel1 = new JLabel("MarketIndex: "+m.getMarketIndex()+""+i);
+		JLabel lblNewLabel1 = new JLabel("MarketIndex: "+m.getMarketIndex()+"");
 		lblNewLabel1.setForeground(Color.YELLOW);
 		lblNewLabel1.setBounds(6, 87, 187, 38);
 		lblNewLabel1.setFont(new Font("Lucida Grande", Font.PLAIN, 17));
 		add(lblNewLabel1, BorderLayout.WEST);
 		preinde=lblNewLabel1;
-		JLabel lblNewLabel_1 = new JLabel(m.getVariationRange()+""+i);
+		JLabel lblNewLabel_1 = new JLabel(m.getVariationRange()+"");
 		lblNewLabel_1.setForeground(Color.YELLOW);
 		lblNewLabel_1.setBounds(219, 87, 182, 38);
 		lblNewLabel_1.setFont(new Font("Lucida Grande", Font.PLAIN, 17));
 		add(lblNewLabel_1);
 		prevar = lblNewLabel_1;
-		JLabel lblNewLabel_2 = new JLabel(m.getOverallCapital()+""+i);
+		JLabel lblNewLabel_2 = new JLabel(m.getOverallCapital()+"");
 		lblNewLabel_2.setForeground(Color.YELLOW);
 		lblNewLabel_2.setBounds(413, 87, 125, 38);
 		lblNewLabel_2.setFont(new Font("Lucida Grande", Font.PLAIN, 17));

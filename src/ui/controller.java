@@ -6,10 +6,15 @@ import vo.Stock;
 import factory.DAOFactory;
 
 public class controller {
-	private DAOFactory D = new DAOFactory();
+	private static UserInformation ui;
 
-	ArrayList<Stock> getstocks(){
-		ArrayList<Stock> a= new ArrayList<Stock>();		
-		return a;
+	public static UserInformation getUi() {
+		return ui;
 	}
+
+	public static  void setUi(UserInformation ui) {
+		controller.ui = ui;
+	}
+	
+	
 }

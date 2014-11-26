@@ -28,17 +28,25 @@ import javax.swing.JTextPane;
 import vo.Stock;
 import factory.DAOFactory;
 
+import javax.swing.JLabel;
+
 public class UserStock extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField textField;
 	private JTextPane textPane;
 	private final Stock stock;
-	public UserStock(final String stockID,final String UserID) throws Exception {
+	private JLabel lblInviladFormat;
+	private controller con;
+	private UserInformation ui;
+	
+	public UserStock(final String stockID,final String UserID, controller con) throws Exception {
+		ui = controller.getUi();
 		stock = DAOFactory.getIStockDAOInstance().getStockByID(stockID);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(700, 100, 450, 300);
 		contentPane = new JPanel();
+		contentPane.setBackground(Color.LIGHT_GRAY);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
@@ -50,64 +58,100 @@ public class UserStock extends JFrame {
 			}
 		});
 		btnNewButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				try{
-				Integer.parseInt(textField.getText());
-				}catch(Exception e1){
-					//e1.
-					System.out.println("are you king me?");
-					//textArea.append("do not use String!!!!");
-					//textPane.setText("are you king me?");
-					//break;
-					return;
-				}
-				
+			public void actionPerformed(ActionEvent e) {		
 					try {
-						DAOFactory.getIHoldDAOInstance().buyAmount(UserID, stockID, stock.getPrice_share(),Integer.parseInt(textField.getText()));
+						if(DAOFactory.getIHoldDAOInstance().buyAmount(UserID, stockID, stock.getPrice_share(),Integer.parseInt(textField.getText()))){
+						System.out.println("buy stock amount  "+UserID+"   "+stockID+"    "+textField.getText());
+						ui.update();
+						dispose();
+						}else{
+							
+						}
+						
 					} catch (NumberFormatException e1) {
 						// TODO Auto-generated catch block
-						e1.printStackTrace();
+						//e1.printStackTrace();
+						lblInviladFormat.setForeground(Color.red);
+						contentPane.updateUI();
+						//System.out.println("this is fault");
 						return;
 					} catch (Exception e1) {
 						// TODO Auto-generated catch block
 						e1.printStackTrace();
 						return;
 					}
-					System.out.println("buy stock amount  "+UserID+"   "+stockID+"    "+textField.getText());
-				
-					// TODO Auto-generated catch block
-					
-				
-				
-				
+
 			}
 		});
-		btnNewButton.setBounds(86, 223, 117, 29);
+		btnNewButton.setBounds(36, 143, 117, 29);
 		contentPane.add(btnNewButton);
 		
 		JButton btnNewButton_1 = new JButton("Sell");
 		btnNewButton_1.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				try{
-					Integer.parseInt(textField.getText());
-					}catch(Exception e1){
-						//e1.
-						System.out.println("are you king me?");
-						//textArea.append("do not use String!!!!");
-						//textPane.setText("are you king me?");
-						//break;
-						return;
+				try {
+					if(DAOFactory.getIHoldDAOInstance().sellAmount(UserID, stockID, stock.getPrice_share(),Integer.parseInt(textField.getText()))){
+					System.out.println("sell stock amount  "+UserID+"   "+stockID+"    "+textField.getText());
+					ui.update();
+					dispose();
+					}else{
+						
 					}
-				System.out.println("sell stock"+textField.getText());
+					
+				} catch (NumberFormatException e1) {
+					// TODO Auto-generated catch block
+					lblInviladFormat.setForeground(Color.red);
+					contentPane.updateUI();
+					//e1.printStackTrace();
+					return;
+				} catch (Exception e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+					return;
+				}
+				
 			}
+			
 		});
-		btnNewButton_1.setBounds(259, 223, 117, 29);
+		btnNewButton_1.setBounds(165, 143, 117, 29);
 		contentPane.add(btnNewButton_1);
 		
 		textField = new JTextField();
-		textField.setBounds(93, 183, 104, 28);
+		textField.setBounds(37, 103, 104, 28);
 		contentPane.add(textField);
 		textField.setColumns(10);
+		
+		JLabel lblNewLabel = new JLabel(stock.getSid());
+		lblNewLabel.setBounds(88, 37, 238, 54);
+		contentPane.add(lblNewLabel);
+		
+		lblInviladFormat = new JLabel("invilad format");
+		lblInviladFormat.setForeground(Color.LIGHT_GRAY);
+		lblInviladFormat.setBounds(209, 189, 117, 16);
+		
+		contentPane.add(lblInviladFormat);
+		
+		JButton btnSellAll = new JButton("sell all");
+		btnSellAll.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+			try {
+				if(DAOFactory.getIHoldDAOInstance().sellALL(UserID, stockID, stock.getPrice_share())){
+					System.out.println("sell stock all  "+UserID+"   "+stockID+"    "+textField.getText());
+					ui.update();
+					dispose();	
+				}else{
+					
+				}
+			} catch (Exception e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+				
+			}
+		});
+		btnSellAll.setBounds(294, 143, 117, 29);
+		contentPane.add(btnSellAll);
 	}
 }
