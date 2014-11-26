@@ -31,6 +31,7 @@ public class Login_frame extends JFrame {
 				try {
 					Login_frame frame = new Login_frame();
 					frame.setVisible(true);
+					frame.setResizable(false);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
