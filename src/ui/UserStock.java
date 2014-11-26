@@ -37,10 +37,9 @@ public class UserStock extends JFrame {
 	private JTextPane textPane;
 	private final Stock stock;
 	private JLabel lblInviladFormat;
-	private controller con;
 	private UserInformation ui;
 	
-	public UserStock(final String stockID,final String UserID, controller con) throws Exception {
+	public UserStock(final String stockID,final String UserID) throws Exception {
 		ui = controller.getUi();
 		stock = DAOFactory.getIStockDAOInstance().getStockByID(stockID);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -123,7 +122,7 @@ public class UserStock extends JFrame {
 		textField.setColumns(10);
 		
 		JLabel lblNewLabel = new JLabel(stock.getSid());
-		lblNewLabel.setBounds(88, 37, 238, 54);
+		lblNewLabel.setBounds(36, 39, 238, 54);
 		contentPane.add(lblNewLabel);
 		
 		lblInviladFormat = new JLabel("invilad format");
@@ -153,5 +152,9 @@ public class UserStock extends JFrame {
 		});
 		btnSellAll.setBounds(294, 143, 117, 29);
 		contentPane.add(btnSellAll);
+		
+		JLabel lblNewLabel_1 = new JLabel("New label");
+		lblNewLabel_1.setBounds(303, 58, 61, 16);
+		contentPane.add(lblNewLabel_1);
 	}
 }

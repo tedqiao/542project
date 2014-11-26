@@ -88,7 +88,7 @@ public class UserInformation extends JPanel {
 					System.out.println("return ID"+s[0]);
 					UserStock us;
 					try {
-						us = new UserStock(s[0],userID,con);
+						us = new UserStock(s[0],userID);
 						us.setVisible(true);
 						us.setResizable(false);
 						us.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -121,8 +121,7 @@ public class UserInformation extends JPanel {
 		hold.setuserID(invest.getuserID());
 		List<HoldCompany> l = DAOFactory.getIHoldDAOInstance().getAllHoldById(hold);
 		
-		//System.out.println("---------------------------------");
-		//System.out.println(invest.getAssets());
+
 		String sid[] = new String[l.size()];
 		for(int i=0;i<l.size();i++){
 			sid[i] = l.get(i).getSid()+"   "+l.get(i).getName();
@@ -139,7 +138,7 @@ public class UserInformation extends JPanel {
 					System.out.println("return ID"+s[0]);
 					UserStock us;
 					try {
-						us = new UserStock(s[0],userID,con);
+						us = new UserStock(s[0],userID);
 						us.setVisible(true);
 						us.setResizable(false);
 						us.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);

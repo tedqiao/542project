@@ -12,11 +12,10 @@ import java.util.List;
 
 public class stockPanel extends JPanel {
 	boolean isblack = true;
-	/**
-	 * Create the panel.
-	 */
-	controller con= new controller();
-	public stockPanel() throws Exception {
+	private String userID;
+	
+	public stockPanel(String userID) throws Exception {
+		this.userID=userID;
 		setForeground(Color.YELLOW); 
 		setBackground(Color.BLACK);
 		setSize(700, 700);
@@ -29,12 +28,12 @@ public class stockPanel extends JPanel {
 			//System.out.println(sc.getPrice_share());
 			//System.out.println(sc.getVariation_Range());
 			if(!isblack){
-			stockInfo s1 = new stockInfo(sc.getSid(),sc.getName(),sc.getPrice_share(),sc.getVariation_Range());
+			stockInfo s1 = new stockInfo(sc.getSid(),sc.getName(),sc.getPrice_share(),sc.getVariation_Range(),userID);
 			s1.setBackground(Color.gray);
 			add(s1);
 			isblack=true;
 			}else{
-				stockInfo s1 = new stockInfo(sc.getSid(),sc.getName(),sc.getPrice_share(),sc.getVariation_Range());
+				stockInfo s1 = new stockInfo(sc.getSid(),sc.getName(),sc.getPrice_share(),sc.getVariation_Range(),userID);
 				s1.setBackground(Color.black);
 				isblack=false;
 				add(s1);
@@ -52,12 +51,12 @@ public class stockPanel extends JPanel {
 			//System.out.println(sc.getPrice_share());
 			//System.out.println(sc.getVariation_Range());
 			if(!isblack){
-			stockInfo s1 = new stockInfo(sc.getSid(),sc.getName(),sc.getPrice_share(),sc.getVariation_Range());
+			stockInfo s1 = new stockInfo(sc.getSid(),sc.getName(),sc.getPrice_share(),sc.getVariation_Range(),userID);
 			s1.setBackground(Color.gray);
 			add(s1);
 			isblack=true;
 			}else{
-				stockInfo s1 = new stockInfo(sc.getSid(),sc.getName(),sc.getPrice_share(),sc.getVariation_Range());
+				stockInfo s1 = new stockInfo(sc.getSid(),sc.getName(),sc.getPrice_share(),sc.getVariation_Range(),userID);
 				s1.setBackground(Color.black);
 				isblack=false;
 				add(s1);

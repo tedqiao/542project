@@ -44,16 +44,17 @@ public class User_Frame extends JFrame {
 		HoldCompany hold = new HoldCompany();
 		hold.setuserID(invest.getuserID());
 		List<HoldCompany> l = DAOFactory.getIHoldDAOInstance().getAllHoldById(hold);
-		for(HoldCompany hd:l){
-				System.out.println(hd.getSid());
-				System.out.println(hd.getshares());
-			}
-		System.out.println("---------------------------------");
+		//for(HoldCompany hd:l){
+			//	System.out.println(hd.getSid());
+			//	System.out.println(hd.getshares());
+			//}
+		//System.out.println("---------------------------------");
 		//System.out.println(invest.getAssets());
 		String sid[] = new String[l.size()];
 		for(int i=0;i<l.size();i++){
 			sid[i] = l.get(i).getSid()+"   "+l.get(i).getName();
 		}
+		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 800, 600);
 		contentPane = new JPanel();
@@ -64,7 +65,7 @@ public class User_Frame extends JFrame {
 		user.setBorder(new LineBorder(Color.YELLOW, 1, true));
 		user.setBounds(0, 0, 193, 598);
 		getContentPane().add(user);
-		st = new stockPanel();
+		st = new stockPanel(userID);
 		st.setBounds(196, 155, 800-200, 600-180);
 		JScrollPane scroll = new JScrollPane(st);
 		scroll.setBounds(196, 155, 800-200, 600-180);

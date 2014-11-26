@@ -1,4 +1,5 @@
 package ui;
+import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 import java.awt.GridBagLayout;
@@ -28,13 +29,23 @@ public class stockInfo extends JPanel {
 	 * Create the panel.
 	 */
 	String stockID;
-	public stockInfo(String stockID,String StockName,Double double1,double d) {
+	public stockInfo(final String stockID,String StockName,Double double1,double d, final String userID) {
 		this.stockID=stockID;
 		addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
+				if(e.getClickCount()==2){
 				stockInfo st =(stockInfo)e.getSource();
-				System.out.println(""+st.stockID);
+				try {
+					marketstock mk = new marketstock(stockID,userID);
+					mk.setVisible(true);
+					mk.setResizable(false);
+					mk.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+				} catch (Exception e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				}
 			}
 		});
 		setBorder(new TitledBorder(null, "", TitledBorder.LEADING, TitledBorder.TOP, null, null));
