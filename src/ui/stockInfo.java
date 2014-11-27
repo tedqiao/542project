@@ -65,7 +65,7 @@ public class stockInfo extends JPanel {
 				RowSpec.decode("17px"),}));
 		
 		JLabel lblStockNumbner = new JLabel(stockID);
-		lblStockNumbner.setForeground(Color.YELLOW);
+		lblStockNumbner.setForeground(Color.CYAN);
 		add(lblStockNumbner, "2, 2, center, fill");
 		
 		JLabel lblNewLabel = new JLabel(StockName);
@@ -73,7 +73,7 @@ public class stockInfo extends JPanel {
 		add(lblNewLabel, "4, 2, center, center");
 		
 		JLabel lblNewLabel_1 = new JLabel(""+double1);
-		lblNewLabel_1.setForeground(Color.GREEN);
+		lblNewLabel_1.setForeground(Color.YELLOW);
 		add(lblNewLabel_1, "6, 2, center, fill");
 		
 		JLabel lblNewLabel_2 = new JLabel(""+d);

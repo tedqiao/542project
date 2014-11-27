@@ -44,7 +44,8 @@ public class stockPanel extends JPanel {
 	}
 	void updata() throws Exception{
 		this.removeAll();
-		List<StockCompany> list =  DAOFactory.getIStockDAOInstance().getAllStocks();
+		
+		List<StockCompany> list =  DAOFactory.getIStockDAOInstance().getAllStocksAfterEvent(controller.getEvent());
 		
 		for(StockCompany sc:list){
 			//System.out.println(sc.getName());

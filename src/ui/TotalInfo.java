@@ -40,11 +40,11 @@ public class TotalInfo extends JPanel {
 		//this.index=index;
 		setBackground(Color.BLACK);
 		setLayout(null);
-		events = DAOFactory.getIEventsInstance().getRandomEvent();
+		events =  DAOFactory.getIEventsInstance().getRandomEvent();
 		
 		//DAOFactory.getIMarketDAOInstance().getMarket().getMarketIndex();
 		//DAOFactory.getIMarketDAOInstance().getMarket().getOverallCapital();
-		m=DAOFactory.getIMarketDAOInstance().getMarket();
+		m= DAOFactory.getIMarketDAOInstance().getMarketAfterEvent(events);
 		
 		JLabel lblTotal = new JLabel("Total");
 		lblTotal.setBackground(Color.BLACK);
@@ -64,13 +64,13 @@ public class TotalInfo extends JPanel {
 		JLabel lblNewLabel_1 = new JLabel(m.getVariationRange()+"");
 		lblNewLabel_1.setFont(new Font("Lucida Grande", Font.PLAIN, 17));
 		lblNewLabel_1.setForeground(Color.YELLOW);
-		lblNewLabel_1.setBounds(219, 87, 182, 38);
+		lblNewLabel_1.setBounds(276, 87, 125, 38);
 		add(lblNewLabel_1);
 		prevar = lblNewLabel_1;
 		JLabel lblNewLabel_2 = new JLabel(m.getOverallCapital()+"");
 		lblNewLabel_2.setFont(new Font("Lucida Grande", Font.PLAIN, 17));
 		lblNewLabel_2.setForeground(Color.YELLOW);
-		lblNewLabel_2.setBounds(413, 87, 125, 38);
+		lblNewLabel_2.setBounds(443, 87, 125, 38);
 		add(lblNewLabel_2);
 		precap = lblNewLabel_2;
 		JTextArea textArea = new JTextArea();
@@ -83,6 +83,12 @@ public class TotalInfo extends JPanel {
 		scroll.setBounds(139, 13, 394, 73);
 		add(scroll);
 		event=scroll;
+		
+		JLabel lblChange = new JLabel("change");
+		lblChange.setFont(new Font("Lucida Grande", Font.PLAIN, 17));
+		lblChange.setForeground(Color.YELLOW);
+		lblChange.setBounds(203, 98, 61, 16);
+		add(lblChange);
 		//i++;
 		addMouseListener(new MouseAdapter() {
 			@Override
@@ -140,12 +146,12 @@ public class TotalInfo extends JPanel {
 	void updata() throws Exception{
 		i = i+1;
 		System.out.println(" "+i);
-		events = DAOFactory.getIEventsInstance().getRandomEvent();
+		//events = DAOFactory.getIEventsInstance().getRandomEvent();
 		remove(preinde);
 		remove(prevar);
 		remove(precap);
 		remove(event);
-		m=DAOFactory.getIMarketDAOInstance().getMarket();
+		m=DAOFactory.getIMarketDAOInstance().getMarketAfterEvent(controller.getEvent());
 		JLabel lblNewLabel1 = new JLabel("MarketIndex: "+m.getMarketIndex()+"");
 		lblNewLabel1.setForeground(Color.YELLOW);
 		lblNewLabel1.setBounds(6, 87, 187, 38);
@@ -153,14 +159,17 @@ public class TotalInfo extends JPanel {
 		add(lblNewLabel1, BorderLayout.WEST);
 		preinde=lblNewLabel1;
 		JLabel lblNewLabel_1 = new JLabel(m.getVariationRange()+"");
-		lblNewLabel_1.setForeground(Color.YELLOW);
-		lblNewLabel_1.setBounds(219, 87, 182, 38);
+		if(m.getVariationRange()>0)
+		lblNewLabel_1.setForeground(Color.red);
+		else
+		lblNewLabel_1.setForeground(Color.green);
+		lblNewLabel_1.setBounds(276, 87, 125, 38);
 		lblNewLabel_1.setFont(new Font("Lucida Grande", Font.PLAIN, 17));
 		add(lblNewLabel_1);
 		prevar = lblNewLabel_1;
 		JLabel lblNewLabel_2 = new JLabel(m.getOverallCapital()+"");
 		lblNewLabel_2.setForeground(Color.YELLOW);
-		lblNewLabel_2.setBounds(413, 87, 125, 38);
+		lblNewLabel_2.setBounds(443, 87, 125, 38);
 		lblNewLabel_2.setFont(new Font("Lucida Grande", Font.PLAIN, 17));
 		add(lblNewLabel_2);
 		precap = lblNewLabel_2;
@@ -176,5 +185,4 @@ public class TotalInfo extends JPanel {
 		event=scroll;
 		
 	}
-	
 }

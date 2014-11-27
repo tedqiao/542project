@@ -2,6 +2,9 @@ package ui;
 import java.util.*;
 
 import javax.swing.JFrame;
+
+import vo.Events;
+import factory.DAOFactory;
 public class view{
 
     public static void main(String[] args) throws Exception {
@@ -34,6 +37,8 @@ class newThread implements Runnable{
 		while(true){
 			try {
 				Thread.sleep(10000);
+				Events event = DAOFactory.getIEventsInstance().getRandomEvent();
+				controller.setEvent(event);
 				my.getTotals().updata();
 				my.getTotals().updateUI();
 				my.getstockpanel().updata();
