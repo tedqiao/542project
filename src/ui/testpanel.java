@@ -26,9 +26,10 @@ import vo.Investors;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.List;
+import javax.swing.border.LineBorder;
 
 
-public class UserInformation extends JPanel {
+public class testpanel extends JPanel {
 
 	controller con;
 	JScrollPane pre;
@@ -37,7 +38,8 @@ public class UserInformation extends JPanel {
 	/**
 	 * Create the panel.
 	 */
-	public UserInformation(final String userID,String name,String sex,String account,double money,String[] stockID) {
+	public testpanel(final String userID,String name,String sex,String account,double money,String[] stockID) {
+		setBorder(new LineBorder(Color.YELLOW));
 		//con.setUi(this);
 		this.userID= userID;
 		setBackground(Color.BLACK);
@@ -160,7 +162,7 @@ public class UserInformation extends JPanel {
 		list.setForeground(Color.YELLOW);
 		list.setBackground(Color.BLACK);
 		scroll.setSize(200, 200);
-		add(scroll, "1, 13, fill, fill");
+		add(scroll, "1, 11, fill, fill");
 		//add(scroll);
 		pre=scroll;
 		JLabel lblAssert = new JLabel("asset: "+invest.getAssets());

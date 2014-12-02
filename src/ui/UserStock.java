@@ -45,10 +45,12 @@ public class UserStock extends JFrame {
 	private UserInformation ui;
 	private JPasswordField passwordField;
 	private JLabel lblInvalidPassword;
+	private double hold;
 	
 	public UserStock(final String stockID,final String UserID) throws Exception {
 		ui = controller.getUi();
 		stock = DAOFactory.getIStockDAOInstance().getStockByID(stockID);
+		hold = DAOFactory.getIHoldDAOInstance().getshares(UserID, stockID);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(700, 100, 450, 300);
 		contentPane = new JPanel();
@@ -197,8 +199,8 @@ public class UserStock extends JFrame {
 		btnSellAll.setBounds(271, 143, 117, 29);
 		contentPane.add(btnSellAll);
 		
-		JLabel lblNewLabel_1 = new JLabel("New label");
-		lblNewLabel_1.setBounds(303, 58, 61, 16);
+		JLabel lblNewLabel_1 = new JLabel("you hold: "+hold);
+		lblNewLabel_1.setBounds(303, 58, 127, 16);
 		contentPane.add(lblNewLabel_1);
 		
 		passwordField = new JPasswordField();

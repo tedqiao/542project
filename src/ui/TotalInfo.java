@@ -87,7 +87,7 @@ public class TotalInfo extends JPanel {
 		JLabel lblChange = new JLabel("change");
 		lblChange.setFont(new Font("Lucida Grande", Font.PLAIN, 17));
 		lblChange.setForeground(Color.YELLOW);
-		lblChange.setBounds(203, 98, 61, 16);
+		lblChange.setBounds(205, 93, 61, 26);
 		add(lblChange);
 		//i++;
 		addMouseListener(new MouseAdapter() {
