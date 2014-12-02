@@ -69,7 +69,8 @@ public class UserStock extends JFrame {
 						try {
 							lblInvalidPassword.setForeground(Color.LIGHT_GRAY);
 							contentPane.updateUI();
-							if(DAOFactory.getIHoldDAOInstance().buyAmount(UserID, stockID, stock.getPrice_share(),Integer.parseInt(textField.getText()))){
+							if(DAOFactory.getIHoldDAOInstance().buyAmount(UserID, stockID, stock.getPrice_share(),Integer.parseInt(textField.getText())))
+							{
 							System.out.println("buy stock amount  "+UserID+"   "+stockID+"    "+textField.getText());
 							ui.update();
 							dispose();
@@ -154,8 +155,8 @@ public class UserStock extends JFrame {
 		textField.setColumns(10);
 		
 		JLabel lblNewLabel = new JLabel(stock.getSid());
-		lblNewLabel.setFont(new Font("Lucida Grande", Font.PLAIN, 17));
-		lblNewLabel.setBounds(53, 39, 238, 54);
+		lblNewLabel.setFont(new Font("Lucida Grande", Font.ITALIC, 13));
+		lblNewLabel.setBounds(30, 34, 104, 29);
 		contentPane.add(lblNewLabel);
 		
 		lblInviladFormat = new JLabel("invilad format");
@@ -199,8 +200,8 @@ public class UserStock extends JFrame {
 		btnSellAll.setBounds(271, 143, 117, 29);
 		contentPane.add(btnSellAll);
 		
-		JLabel lblNewLabel_1 = new JLabel("you hold: "+hold);
-		lblNewLabel_1.setBounds(303, 58, 127, 16);
+		JLabel lblNewLabel_1 = new JLabel("User hold: "+hold);
+		lblNewLabel_1.setBounds(30, 75, 127, 16);
 		contentPane.add(lblNewLabel_1);
 		
 		passwordField = new JPasswordField();
@@ -217,7 +218,7 @@ public class UserStock extends JFrame {
 		contentPane.add(lblNewLabel_3);
 		
 		JLabel lblStockid = new JLabel("StockID");
-		lblStockid.setBounds(53, 11, 61, 16);
+		lblStockid.setBounds(30, 6, 61, 16);
 		contentPane.add(lblStockid);
 		
 		JButton btnNewButton_2 = new JButton("cancel");
@@ -238,5 +239,13 @@ public class UserStock extends JFrame {
 		lblInvalidPassword.setForeground(Color.LIGHT_GRAY);
 		lblInvalidPassword.setBounds(164, 222, 112, 16);
 		contentPane.add(lblInvalidPassword);
+		
+		JLabel lblNewLabel_4 = new JLabel("Price"+"  ");
+		lblNewLabel_4.setBounds(159, 3, 104, 23);
+		contentPane.add(lblNewLabel_4);
+		
+		JLabel lblNewLabel_5 = new JLabel(""+stock.getPrice_share());
+		lblNewLabel_5.setBounds(164, 40, 61, 16);
+		contentPane.add(lblNewLabel_5);
 	}
 }

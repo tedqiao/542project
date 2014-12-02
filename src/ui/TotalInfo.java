@@ -48,9 +48,9 @@ public class TotalInfo extends JPanel {
 		
 		JLabel lblTotal = new JLabel("Total");
 		lblTotal.setBackground(Color.BLACK);
-		lblTotal.setBounds(0, 0, 107, 55);
+		lblTotal.setBounds(20, 20, 107, 55);
 		lblTotal.setVerticalAlignment(SwingConstants.BOTTOM);
-		lblTotal.setForeground(Color.BLUE);
+		lblTotal.setForeground(Color.YELLOW);
 		lblTotal.setFont(new Font("Lucida Grande", Font.PLAIN, 31));
 		add(lblTotal);
 		System.out.println(" "+i);
@@ -74,8 +74,9 @@ public class TotalInfo extends JPanel {
 		add(lblNewLabel_2);
 		precap = lblNewLabel_2;
 		JTextArea textArea = new JTextArea();
-		textArea.setForeground(Color.BLUE);
-		textArea.setBackground(Color.LIGHT_GRAY);
+		textArea.setEditable(false);
+		textArea.setForeground(Color.LIGHT_GRAY);
+		textArea.setBackground(Color.BLACK);
 		textArea.setBounds(109, 6, 200, 42);
 		textArea.setText(TOOLFactory.getstringToolInstance().fullJustify(events.getincident(),l));
 		//textArea.is();
@@ -174,10 +175,11 @@ public class TotalInfo extends JPanel {
 		add(lblNewLabel_2);
 		precap = lblNewLabel_2;
 		JTextArea textArea = new JTextArea();
-		textArea.setForeground(Color.BLUE);
-		textArea.setBackground(Color.LIGHT_GRAY);
-		textArea.setBounds(139, 13, 394, 73);
-		textArea.setText(TOOLFactory.getstringToolInstance().fullJustify(events.getincident(),l));
+		textArea.setEditable(false);
+		textArea.setForeground(Color.LIGHT_GRAY);
+		textArea.setBackground(Color.BLACK);
+		textArea.setBounds(109, 6, 200, 42);
+		textArea.setText(TOOLFactory.getstringToolInstance().fullJustify(controller.getEvent().getincident(),l));
 		//textArea.is();
 		JScrollPane scroll = new JScrollPane(textArea);
 		scroll.setBounds(139, 13, 394, 73);

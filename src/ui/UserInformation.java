@@ -4,6 +4,7 @@ import javax.swing.JPanel;
 import java.awt.Color;
 import java.awt.FlowLayout;
 import java.awt.BorderLayout;
+import java.awt.Font;
 
 import javax.swing.JLabel;
 
@@ -108,6 +109,8 @@ public class UserInformation extends JPanel {
 		add(lblPresonalStocks, "1, 9, center, default");
 		
 		JLabel lblStockidCompany = new JLabel("stockID  company");
+		lblStockidCompany.setFont(new Font("Calisto MT", Font.PLAIN, 13));
+		lblStockidCompany.setLabelFor(scroll);
 		lblStockidCompany.setForeground(Color.YELLOW);
 		add(lblStockidCompany, "1, 11");
 		list.setForeground(Color.YELLOW);

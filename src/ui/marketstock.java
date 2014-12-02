@@ -146,5 +146,14 @@ public class marketstock extends JFrame {
 		lblInvalidPassword.setForeground(Color.LIGHT_GRAY);
 		lblInvalidPassword.setBounds(320, 148, 112, 16);
 		contentPane.add(lblInvalidPassword);
+		
+		JButton btnCancel = new JButton("cancel");
+		btnCancel.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				dispose();
+			}
+		});
+		btnCancel.setBounds(248, 184, 117, 29);
+		contentPane.add(btnCancel);
 	}
 }

@@ -27,6 +27,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.List;
 import javax.swing.border.LineBorder;
+import java.awt.Font;
 
 
 public class testpanel extends JPanel {
@@ -110,6 +111,8 @@ public class testpanel extends JPanel {
 		add(lblPresonalStocks, "1, 9, center, default");
 		
 		JLabel lblStockidCompany = new JLabel("stockID  company");
+		lblStockidCompany.setFont(new Font("Calisto MT", Font.PLAIN, 13));
+		lblStockidCompany.setLabelFor(scroll);
 		lblStockidCompany.setForeground(Color.YELLOW);
 		add(lblStockidCompany, "1, 11");
 		list.setForeground(Color.YELLOW);
