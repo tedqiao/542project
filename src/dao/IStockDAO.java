@@ -96,7 +96,8 @@ public class IStockDAO {
 				double randomVarible = 1-Math.random()*2;//random range from -1 to +1
 				double stockVariation = rs.getDouble("variation_range");
 				double variation_range = randomVarible * stockVariation;
-				double variation_after_event = variation_range + range*Math.abs(variation_range);
+				//double variation_after_event = variation_range + range*Math.abs(variation_range);
+				double variation_after_event = variation_range + range;
 				if(variation_after_event>Math.abs(stockVariation)){ //variation are limited in VariationRange range
 					variation_after_event = Math.abs(stockVariation);
 				}
