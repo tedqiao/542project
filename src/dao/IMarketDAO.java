@@ -71,6 +71,8 @@ public class IMarketDAO {
 		}
 		
 		int marketIndex_after_event = (int)(market.getMarketIndex()+ market.getMarketIndex()*variation_after_event);
+		variation_after_event = (Math.round(variation_after_event*10000))/10000.0; //4 digits
+		
 		market.setMarketIndex(marketIndex_after_event);
 		market.setVariationRange(variation_after_event);
 		
