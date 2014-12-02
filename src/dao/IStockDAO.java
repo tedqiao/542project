@@ -95,9 +95,9 @@ public class IStockDAO {
 				//calculate the value after event
 				double randomVarible = 1-Math.random()*2;//random range from -1 to +1
 				double stockVariation = rs.getDouble("variation_range");
-				double variation_range = randomVarible * stockVariation;
-				//double variation_after_event = variation_range + range*Math.abs(variation_range);
-				double variation_after_event = variation_range + range;
+				double offset = randomVarible * stockVariation;
+				
+				double variation_after_event = offset + range;
 				if(variation_after_event>Math.abs(stockVariation)){ //variation are limited in VariationRange range
 					variation_after_event = Math.abs(stockVariation);
 				}
@@ -105,10 +105,9 @@ public class IStockDAO {
 					variation_after_event = -Math.abs(stockVariation);
 				}
 				double price_variation_after_event = rs.getDouble("price_share")*variation_after_event;
-				//double price_share = (int)(rs.getDouble("price_share")+ rs.getDouble("price_share")*variation_after_event);
 				double price_share =  rs.getDouble("price_share")+ price_variation_after_event;
 				
-				//取小数位
+				//get 4 digits
 				price_share = (Math.round(price_share*100))/100.0;//2 digits
 				//price_variation_after_event = (Math.round(price_variation_after_event*100))/100.0; //2 digits
 				variation_after_event = (Math.round(variation_after_event*10000))/10000.0; //4 digits
@@ -116,8 +115,8 @@ public class IStockDAO {
 				sc.setSid(rs.getString("sid"));
 				sc.setName(rs.getString("name"));
 				sc.setPrice_share(price_share);
-				sc.setVariation_Range(variation_after_event); //这个百分比浮动
-				//sc.setVariation_Range(price_variation_after_event); //这是具体钱浮动
+				sc.setVariation_Range(variation_after_event); //percent variation
+				//sc.setVariation_Range(price_variation_after_event); //real price variation
 				list.add(sc);
 			}
 		} catch (Exception e) {
