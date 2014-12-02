@@ -61,9 +61,11 @@ public class IMarketDAO {
 		
 		Market market = getMarket();
 		double randomVarible = 1-Math.random()*2;//random range from -1 to +1
-		double variation_range = randomVarible*market.getVariationRange();
+		double offset = randomVarible * 0.03;
+		//double variation_range = randomVarible*market.getVariationRange();
 		//double variation_after_event = variation_range + range*Math.abs(variation_range);
-		double variation_after_event = variation_range + range;
+		
+		double variation_after_event = offset + range;
 		if(variation_after_event>Math.abs(market.getVariationRange())){ //variation are limited in VariationRange range
 			variation_after_event = Math.abs(market.getVariationRange());
 		}
