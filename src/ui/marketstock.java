@@ -47,7 +47,7 @@ public class marketstock extends JFrame {
 		ui = controller.getUi();
 		stock = DAOFactory.getIStockDAOInstance().getStockByID(stockID);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(700, 100, 450, 300);
+		setBounds(700, 100, 400, 300);
 		contentPane = new JPanel();
 		contentPane.setBackground(Color.LIGHT_GRAY);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -99,30 +99,30 @@ public class marketstock extends JFrame {
 
 			}
 		});
-		btnNewButton.setBounds(57, 184, 117, 29);
+		btnNewButton.setBounds(76, 184, 117, 29);
 		contentPane.add(btnNewButton);
 		
 		textField = new JTextField();
-		textField.setBounds(180, 106, 104, 28);
+		textField.setBounds(145, 106, 141, 28);
 		contentPane.add(textField);
 		textField.setColumns(10);
 		
 		JLabel lblNewLabel = new JLabel(stock.getSid());
-		lblNewLabel.setBounds(57, 40, 238, 54);
+		lblNewLabel.setBounds(56, 47, 96, 41);
 		contentPane.add(lblNewLabel);
 		
 		lblInviladFormat = new JLabel("invilad format");
 		lblInviladFormat.setForeground(Color.LIGHT_GRAY);
-		lblInviladFormat.setBounds(315, 112, 117, 16);
+		lblInviladFormat.setBounds(289, 112, 117, 16);
 		
 		contentPane.add(lblInviladFormat);
 		
 		JLabel lblNewLabel_3 = new JLabel("verify password");
-		lblNewLabel_3.setBounds(68, 146, 112, 16);
+		lblNewLabel_3.setBounds(30, 146, 112, 16);
 		contentPane.add(lblNewLabel_3);
 		
 		JLabel lblNewLabel_1 = new JLabel("amount");
-		lblNewLabel_1.setBounds(95, 112, 57, 16);
+		lblNewLabel_1.setBounds(56, 112, 57, 16);
 		contentPane.add(lblNewLabel_1);
 		
 		JButton btnNewButton_2 = new JButton("cancel");
@@ -134,7 +134,7 @@ public class marketstock extends JFrame {
 		});
 		
 		passwordField = new JPasswordField();
-		passwordField.setBounds(178, 140, 141, 28);
+		passwordField.setBounds(145, 144, 141, 28);
 		contentPane.add(passwordField);
 		
 		JLabel lblStockid = new JLabel("stockID");
@@ -144,7 +144,7 @@ public class marketstock extends JFrame {
 		lblInvalidPassword = new JLabel("invalid password");
 		lblInvalidPassword.setVerticalAlignment(SwingConstants.TOP);
 		lblInvalidPassword.setForeground(Color.LIGHT_GRAY);
-		lblInvalidPassword.setBounds(320, 148, 112, 16);
+		lblInvalidPassword.setBounds(289, 146, 112, 16);
 		contentPane.add(lblInvalidPassword);
 		
 		JButton btnCancel = new JButton("cancel");
@@ -153,7 +153,15 @@ public class marketstock extends JFrame {
 				dispose();
 			}
 		});
-		btnCancel.setBounds(248, 184, 117, 29);
+		btnCancel.setBounds(245, 184, 117, 29);
 		contentPane.add(btnCancel);
+		
+		JLabel lblNewLabel_4 = new JLabel("Price"+"  ");
+		lblNewLabel_4.setBounds(172, 24, 104, 23);
+		contentPane.add(lblNewLabel_4);
+		
+		JLabel lblNewLabel_5 = new JLabel(""+stock.getPrice_share());
+		lblNewLabel_5.setBounds(180, 59, 61, 16);
+		contentPane.add(lblNewLabel_5);
 	}
 }

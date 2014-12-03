@@ -88,9 +88,9 @@ public class User_Frame extends JFrame {
 		user.setBounds(0, 0, 193, 598);
 		getContentPane().add(user);
 		st = new stockPanel(userID);
-		st.setBounds(196, 155, 800-200, 600-200);
+		st.setBounds(194, 155, 800-200, 600-200);
 		JScrollPane scroll = new JScrollPane(st);
-		scroll.setBounds(196, 155, 800-200, 600-200);
+		scroll.setBounds(194, 155, 800-200, 600-200);
 		getContentPane().add(scroll);
 		t = new TotalInfo();
 		t.setSize(600, 128);
@@ -98,7 +98,7 @@ public class User_Frame extends JFrame {
 		getContentPane().add(t);
 		JPanel panel = new JPanel();
 		panel.setBackground(Color.BLACK);
-		panel.setBounds(196, 130, 800-200, 32-8);
+		panel.setBounds(195, 130, 800-200, 32-8);
 		contentPane.add(panel);
 		panel.setLayout(new FormLayout(new ColumnSpec[] {
 				ColumnSpec.decode("30px"),

@@ -30,7 +30,7 @@ public class TotalInfo extends JPanel {
 		private JScrollPane event;
 		private Market m;
 		private Events events;
-		private final int l=60;
+		private final int l=55;
 		//TotalInfo total;
 	/**
 	 * Create the panel.

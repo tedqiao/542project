@@ -7,7 +7,7 @@ import vo.Events;
 import factory.DAOFactory;
 public class view{
 
-    public static void main(String[] args) throws Exception {
+    public static void main(String[] args) {
     	
     	Login_frame lo = new Login_frame();
     	lo.setVisible(true);

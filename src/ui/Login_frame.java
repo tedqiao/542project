@@ -73,6 +73,7 @@ public class Login_frame extends JFrame {
 		
 		JButton btnNewButton = new JButton("confirm");
 		btnNewButton.addActionListener(new ActionListener() {
+			//@SuppressWarnings("deprecation")
 			public void actionPerformed(ActionEvent e) {
 				remove(label);
 				lblFail.setForeground(SystemColor.window);

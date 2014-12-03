@@ -52,7 +52,7 @@ public class UserStock extends JFrame {
 		stock = DAOFactory.getIStockDAOInstance().getStockByID(stockID);
 		hold = DAOFactory.getIHoldDAOInstance().getshares(UserID, stockID);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(700, 100, 450, 300);
+		setBounds(700, 100, 400, 300);
 		contentPane = new JPanel();
 		contentPane.setBackground(Color.LIGHT_GRAY);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -102,7 +102,7 @@ public class UserStock extends JFrame {
 					
 					}
 		});
-		btnNewButton.setBounds(17, 143, 117, 29);
+		btnNewButton.setBounds(30, 175, 117, 29);
 		contentPane.add(btnNewButton);
 		
 		JButton btnNewButton_1 = new JButton("Sell");
@@ -146,11 +146,11 @@ public class UserStock extends JFrame {
 			}
 			
 		});
-		btnNewButton_1.setBounds(146, 143, 117, 29);
+		btnNewButton_1.setBounds(146, 175, 117, 29);
 		contentPane.add(btnNewButton_1);
 		
 		textField = new JTextField();
-		textField.setBounds(103, 105, 104, 28);
+		textField.setBounds(148, 105, 141, 28);
 		contentPane.add(textField);
 		textField.setColumns(10);
 		
@@ -161,7 +161,7 @@ public class UserStock extends JFrame {
 		
 		lblInviladFormat = new JLabel("invilad format");
 		lblInviladFormat.setForeground(Color.LIGHT_GRAY);
-		lblInviladFormat.setBounds(207, 111, 117, 16);
+		lblInviladFormat.setBounds(301, 111, 117, 16);
 		
 		contentPane.add(lblInviladFormat);
 		
@@ -197,7 +197,7 @@ public class UserStock extends JFrame {
 				
 			}
 		});
-		btnSellAll.setBounds(271, 143, 117, 29);
+		btnSellAll.setBounds(271, 175, 117, 29);
 		contentPane.add(btnSellAll);
 		
 		JLabel lblNewLabel_1 = new JLabel("User hold: "+hold);
@@ -205,16 +205,16 @@ public class UserStock extends JFrame {
 		contentPane.add(lblNewLabel_1);
 		
 		passwordField = new JPasswordField();
-		passwordField.setBounds(17, 216, 141, 28);
+		passwordField.setBounds(148, 135, 141, 28);
 		contentPane.add(passwordField);
 		
 		JLabel lblNewLabel_2 = new JLabel("Amount");
 		lblNewLabel_2.setVerticalAlignment(SwingConstants.TOP);
-		lblNewLabel_2.setBounds(30, 111, 61, 16);
+		lblNewLabel_2.setBounds(68, 111, 61, 16);
 		contentPane.add(lblNewLabel_2);
 		
 		JLabel lblNewLabel_3 = new JLabel("verify password");
-		lblNewLabel_3.setBounds(20, 184, 112, 16);
+		lblNewLabel_3.setBounds(35, 145, 112, 16);
 		contentPane.add(lblNewLabel_3);
 		
 		JLabel lblStockid = new JLabel("StockID");
@@ -237,7 +237,7 @@ public class UserStock extends JFrame {
 		
 		lblInvalidPassword = new JLabel("invalid password");
 		lblInvalidPassword.setForeground(Color.LIGHT_GRAY);
-		lblInvalidPassword.setBounds(164, 222, 112, 16);
+		lblInvalidPassword.setBounds(301, 147, 112, 16);
 		contentPane.add(lblInvalidPassword);
 		
 		JLabel lblNewLabel_4 = new JLabel("Price"+"  ");
