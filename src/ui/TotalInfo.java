@@ -46,12 +46,12 @@ public class TotalInfo extends JPanel {
 		//DAOFactory.getIMarketDAOInstance().getMarket().getOverallCapital();
 		m= DAOFactory.getIMarketDAOInstance().getMarketAfterEvent(events);
 		
-		JLabel lblTotal = new JLabel("Total");
+		JLabel lblTotal = new JLabel("NASDAQ");
 		lblTotal.setBackground(Color.BLACK);
 		lblTotal.setBounds(20, 20, 107, 55);
 		lblTotal.setVerticalAlignment(SwingConstants.BOTTOM);
 		lblTotal.setForeground(Color.YELLOW);
-		lblTotal.setFont(new Font("Lucida Grande", Font.PLAIN, 31));
+		lblTotal.setFont(new Font("Lucida Grande", Font.PLAIN, 21));
 		add(lblTotal);
 		System.out.println(" "+i);
 		JLabel lblNewLabel = new JLabel("MarketIndex: "+m.getMarketIndex()+""+i);
@@ -61,7 +61,7 @@ public class TotalInfo extends JPanel {
 		add(lblNewLabel);
 		preinde = lblNewLabel;
 		
-		JLabel lblNewLabel_1 = new JLabel(m.getVariationRange()+"");
+		JLabel lblNewLabel_1 = new JLabel("");
 		lblNewLabel_1.setFont(new Font("Lucida Grande", Font.PLAIN, 17));
 		lblNewLabel_1.setForeground(Color.YELLOW);
 		lblNewLabel_1.setBounds(276, 87, 125, 38);
@@ -119,7 +119,7 @@ public class TotalInfo extends JPanel {
 				lblNewLabel_1.setFont(new Font("Lucida Grande", Font.PLAIN, 17));
 				add(lblNewLabel_1);
 				prevar = lblNewLabel_1;
-				JLabel lblNewLabel_2 = new JLabel(m.getOverallCapital()+"");
+				JLabel lblNewLabel_2 = new JLabel(m.getOverallCapital()*100+"%");
 				lblNewLabel_2.setForeground(Color.YELLOW);
 				lblNewLabel_2.setBounds(413, 87, 125, 38);
 				lblNewLabel_2.setFont(new Font("Lucida Grande", Font.PLAIN, 17));
@@ -146,6 +146,8 @@ public class TotalInfo extends JPanel {
 	}
 	void updata() throws Exception{
 		i = i+1;
+		java.text.DecimalFormat b=new java.text.DecimalFormat("#.0");
+		
 		System.out.println(" "+i);
 		//events = DAOFactory.getIEventsInstance().getRandomEvent();
 		remove(preinde);
@@ -159,7 +161,8 @@ public class TotalInfo extends JPanel {
 		lblNewLabel1.setFont(new Font("Lucida Grande", Font.PLAIN, 17));
 		add(lblNewLabel1, BorderLayout.WEST);
 		preinde=lblNewLabel1;
-		JLabel lblNewLabel_1 = new JLabel(m.getVariationRange()+"");
+		b.format(m.getVariationRange()*100);
+		JLabel lblNewLabel_1 = new JLabel(b.format(m.getVariationRange()*100)+"%");
 		if(m.getVariationRange()>0)
 		lblNewLabel_1.setForeground(Color.red);
 		else

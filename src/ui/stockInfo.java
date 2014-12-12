@@ -24,7 +24,7 @@ import java.awt.event.MouseEvent;
 
 
 public class stockInfo extends JPanel {
-
+	java.text.DecimalFormat b=new java.text.DecimalFormat("#.0");
 	/**
 	 * Create the panel.
 	 */
@@ -75,8 +75,8 @@ public class stockInfo extends JPanel {
 		JLabel lblNewLabel_1 = new JLabel(""+double1);
 		lblNewLabel_1.setForeground(Color.YELLOW);
 		add(lblNewLabel_1, "6, 2, center, fill");
-		
-		JLabel lblNewLabel_2 = new JLabel(""+d);
+		java.text.DecimalFormat b=new java.text.DecimalFormat("#.0");
+		JLabel lblNewLabel_2 = new JLabel(""+b.format(d*100) +"%");
 		if(d>0){
 		lblNewLabel_2.setForeground(Color.RED);
 		}else {
