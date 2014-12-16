@@ -22,8 +22,8 @@ public class stockPanel extends JPanel {
 		setLayout(new GridLayout(0, 1, 0, 0));
 		this.setBounds(500, 500, 500, 500);;
 		List<StockCompany> list =  DAOFactory.getIStockDAOInstance().getAllStocks();
-		
-		for(StockCompany sc:list){
+		GlobalVo globalvo = new GlobalVo();
+		for(StockCompany sc:globalvo.stocks){
 			//System.out.println(sc.getName());
 			//System.out.println(sc.getPrice_share());
 			//System.out.println(sc.getVariation_Range());
@@ -46,8 +46,9 @@ public class stockPanel extends JPanel {
 		this.removeAll();
 		
 		List<StockCompany> list =  DAOFactory.getIStockDAOInstance().getAllStocksAfterEvent(controller.getEvent());
+		GlobalVo globalvo = new GlobalVo();
 		
-		for(StockCompany sc:list){
+		for(StockCompany sc:globalvo.stocks){
 			//System.out.println(sc.getName());
 			//System.out.println(sc.getPrice_share());
 			//System.out.println(sc.getVariation_Range());

@@ -26,7 +26,9 @@ import java.awt.Label;
 
 import javax.swing.JTextPane;
 
+import vo.GlobalVo;
 import vo.Stock;
+import vo.StockCompany;
 import factory.DAOFactory;
 
 import javax.swing.JLabel;
@@ -42,8 +44,14 @@ public class marketstock extends JFrame {
 	private UserInformation ui;
 	private JPasswordField passwordField;
 	private JLabel lblInvalidPassword;
-	
+	private double price;
 	public marketstock(final String stockID,final String UserID) throws Exception {
+		GlobalVo globalvo = new GlobalVo();
+		for(StockCompany sc:globalvo.stocks){
+			if(sc.getSid().equals(stockID)){
+				price=sc.getPrice_share();
+		 }
+		}
 		ui = controller.getUi();
 		stock = DAOFactory.getIStockDAOInstance().getStockByID(stockID);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -67,7 +75,7 @@ public class marketstock extends JFrame {
 						try {
 							lblInvalidPassword.setForeground(Color.LIGHT_GRAY);
 							contentPane.updateUI();
-							if(DAOFactory.getIHoldDAOInstance().buyAmount(UserID, stockID, stock.getPrice_share(),Integer.parseInt(textField.getText()))){
+							if(DAOFactory.getIHoldDAOInstance().buyAmount(UserID, stockID, price,Integer.parseInt(textField.getText()))){
 							System.out.println("buy stock amount  "+UserID+"   "+stockID+"    "+textField.getText());
 							ui.update();
 							dispose();
@@ -160,7 +168,7 @@ public class marketstock extends JFrame {
 		lblNewLabel_4.setBounds(172, 24, 104, 23);
 		contentPane.add(lblNewLabel_4);
 		
-		JLabel lblNewLabel_5 = new JLabel(""+stock.getPrice_share());
+		JLabel lblNewLabel_5 = new JLabel(""+price);
 		lblNewLabel_5.setBounds(180, 59, 61, 16);
 		contentPane.add(lblNewLabel_5);
 	}

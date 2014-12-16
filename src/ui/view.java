@@ -4,6 +4,9 @@ import java.util.*;
 import javax.swing.JFrame;
 
 import vo.Events;
+import vo.GlobalVo;
+import vo.Market;
+import vo.StockCompany;
 import factory.DAOFactory;
 public class view{
 
@@ -38,6 +41,16 @@ class newThread implements Runnable{
 			try {
 				Thread.sleep(10000);
 				Events event = DAOFactory.getIEventsInstance().getRandomEvent();
+				
+				
+				GlobalVo globalvo = new GlobalVo();
+				Market market = DAOFactory.getIMarketDAOInstance().getMarketAfterEvent(event);
+				List<StockCompany> stocks = DAOFactory.getIStockDAOInstance().getAllStocksAfterEvent(event);
+				globalvo.event = event;
+				globalvo.market = market;
+				globalvo.stocks = stocks;
+				
+				
 				controller.setEvent(event);
 				my.getTotals().updata();
 				my.getTotals().updateUI();

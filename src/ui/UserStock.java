@@ -25,7 +25,9 @@ import java.awt.Label;
 
 import javax.swing.JTextPane;
 
+import vo.GlobalVo;
 import vo.Stock;
+import vo.StockCompany;
 import factory.DAOFactory;
 
 import javax.swing.JLabel;
@@ -46,9 +48,17 @@ public class UserStock extends JFrame {
 	private JPasswordField passwordField;
 	private JLabel lblInvalidPassword;
 	private double hold;
+	private double price;
 	
 	public UserStock(final String stockID,final String UserID) throws Exception {
 		ui = controller.getUi();
+		GlobalVo globalvo = new GlobalVo();
+		for(StockCompany sc:globalvo.stocks){
+			if(sc.getSid().equals(stockID)){
+				price=sc.getPrice_share();
+		//System.out.println(sc.getName());
+		 }
+		}
 		stock = DAOFactory.getIStockDAOInstance().getStockByID(stockID);
 		hold = DAOFactory.getIHoldDAOInstance().getshares(UserID, stockID);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -69,7 +79,7 @@ public class UserStock extends JFrame {
 						try {
 							lblInvalidPassword.setForeground(Color.LIGHT_GRAY);
 							contentPane.updateUI();
-							if(DAOFactory.getIHoldDAOInstance().buyAmount(UserID, stockID, stock.getPrice_share(),Integer.parseInt(textField.getText())))
+							if(DAOFactory.getIHoldDAOInstance().buyAmount(UserID, stockID, price,Integer.parseInt(textField.getText())))
 							{
 							System.out.println("buy stock amount  "+UserID+"   "+stockID+"    "+textField.getText());
 							ui.update();
@@ -114,7 +124,7 @@ public class UserStock extends JFrame {
 					try {
 						lblInvalidPassword.setForeground(Color.LIGHT_GRAY);
 						contentPane.updateUI();
-						if(DAOFactory.getIHoldDAOInstance().sellAmount(UserID, stockID, stock.getPrice_share(),Integer.parseInt(textField.getText()))){
+						if(DAOFactory.getIHoldDAOInstance().sellAmount(UserID, stockID, price,Integer.parseInt(textField.getText()))){
 						System.out.println("sell stock amount  "+UserID+"   "+stockID+"    "+textField.getText());
 						ui.update();
 						dispose();
@@ -243,8 +253,8 @@ public class UserStock extends JFrame {
 		JLabel lblNewLabel_4 = new JLabel("Price"+"  ");
 		lblNewLabel_4.setBounds(159, 3, 104, 23);
 		contentPane.add(lblNewLabel_4);
-		
-		JLabel lblNewLabel_5 = new JLabel(""+stock.getPrice_share());
+		//GlobalVo globalvo = new GlobalVo();
+		JLabel lblNewLabel_5 = new JLabel(""+price);
 		lblNewLabel_5.setBounds(164, 40, 61, 16);
 		contentPane.add(lblNewLabel_5);
 	}
