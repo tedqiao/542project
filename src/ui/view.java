@@ -27,7 +27,15 @@ class newThread implements Runnable{
 	@Override
 	public void run() {
 		try {
+			Events event = DAOFactory.getIEventsInstance().getRandomEvent();
 			
+			
+			GlobalVo globalvo = new GlobalVo();
+			Market market = DAOFactory.getIMarketDAOInstance().getMarketAfterEvent(event);
+			List<StockCompany> stocks = DAOFactory.getIStockDAOInstance().getAllStocksAfterEvent(event);
+			globalvo.event = event;
+			globalvo.market = market;
+			globalvo.stocks = stocks;
 			my=new User_Frame(UserID);
 			my.setVisible(true);
 	    	my.setResizable(false);

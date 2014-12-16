@@ -64,15 +64,19 @@ public class User_Frame extends JFrame {
 		}
 		JMenuBar menuBar = new JMenuBar();
 		JMenu Menu1=new JMenu("open");
+		JMenu Menu2=new JMenu("help");
 		//JMenu Menu2=new JMenu("ni mei");
 		JMenuItem menuItem=new JMenuItem("exit");
+		JMenuItem menuItem2=new JMenuItem("version 2.0");
 		menuItem.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				System.exit(0);
 			}
 		});
 		Menu1.add(menuItem);
+		Menu2.add(menuItem2);
 		menuBar.add(Menu1);
+		menuBar.add(Menu2);
 		//menuBar.add(Menu2);
 		
 		setJMenuBar(menuBar);
